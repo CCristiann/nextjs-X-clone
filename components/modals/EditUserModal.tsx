@@ -23,9 +23,10 @@ type actionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
 type EditUserModalProps = {
   user: User;
+  mutateUser: () => void;
 };
 
-const EditUserModal: React.FC<EditUserModalProps> = ({ user }) => {
+const EditUserModal: React.FC<EditUserModalProps> = ({ user, mutateUser }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -101,6 +102,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user }) => {
       });
 
       if (res.status === 200) {
+        mutateUser()
         toast.success("Success!");
       }
 
