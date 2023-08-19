@@ -1,6 +1,7 @@
 <div align='center'>
   <img src='/assets/images/twitter-x-logo.png'>
 </div>
+
 # About the project
 
 Twitter clone
