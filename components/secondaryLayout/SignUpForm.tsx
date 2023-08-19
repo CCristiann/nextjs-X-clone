@@ -13,10 +13,6 @@ import useTweets from "@/hooks/useTweets";
 
 const SignUpForm = () => {
   const router = useRouter();
-  const loginModal = useLoginModal();
-
-  const { data: tweets } = useTweets();
-  console.log(tweets);
 
   return (
     <div className="md:w-[60vw] lg:w-[55vw] text-white flex flex-col self-center gap-5 px-12 py-8 md:justify-center">
