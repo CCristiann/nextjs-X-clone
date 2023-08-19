@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  name             String?   
+  username         String?   @unique
+  bio              String?
+  website          String?
+  location         String?
+  email            String?   @unique
+  emailVerified    DateTime?
+  image            String?
+  coverImage       String?
+  profileImage     String?
+  hashedPassword   String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  followingIds     String[]  @db.ObjectId
+  followersCount   Int?     
+  hadNotifications Boolean?
+
+  posts         Post[]
+  comments      Comment[]
+  notifications Notification[]
+}
+
+model Post {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  body      String
+  image     String? 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  creator   String   @db.ObjectId
+  likeIds   String[] @db.ObjectId
+
+  user         User           @relation(fields: [creator], references: [id], onDelete: Cascade)
+  comments     Comment[]
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  body      String
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  creator   String   @db.ObjectId
+  tweetId   String   @db.ObjectId
+  isTweetDeleted Boolean?
+
+  user User @relation(fields: [creator], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  body      String
+  createdAt DateTime @default(now())
+  userId    String   @db.ObjectId
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

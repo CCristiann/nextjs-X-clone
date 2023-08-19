@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-[12px] bg-black/40 backdrop-blur-lg border-[1px] border-neutral-800;
+}
+
+.not-scrollable {
+  @apply overflow-y-hidden;
+}
+
+:root {
+  @apply h-full bg-black;
+}
+
+html {
+  @apply overflow-x-hidden;
+}
+
+.app {
+  @apply md:border-x-[1px] flex-1 md:max-w-[600px] w-full md:border-neutral-800;
+}
+
+.paddings {
+  @apply py-2 lg:py-4 px-1 lg:px-4;
+}
+
+.modal_overlay-center {
+  @apply fixed top-0 left-0 bg-slate-600/40 h-screen w-screen flex items-center justify-center z-[999];
+}
+
+.modal_overlay-topCenter {
+  @apply fixed left-0 bg-slate-600/40 h-screen w-screen flex justify-center z-[999];
+}
+
+.modal_wrapper {
+  @apply relative bg-black w-screen h-screen md:max-h-[560px] md:h-fit md:max-w-xl md:rounded-xl md:w-full;
+}
+
+.modal_body {
+  @apply px-10;
+}
+.modal_footer {
+  @apply px-10 py-8 mb-5;
+}
+
+.image-container {
+  @apply relative;
+}
