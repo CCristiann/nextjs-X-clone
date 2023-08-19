@@ -18,6 +18,7 @@ import { BiSolidCheckCircle } from "react-icons/bi";
 import Loader from "../Loader";
 import { stat } from "fs";
 import upload from "@/libs/upload";
+import useUsers from "@/hooks/useUsers";
 
 type actionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
@@ -27,6 +28,7 @@ type EditUserModalProps = {
 };
 
 const EditUserModal: React.FC<EditUserModalProps> = ({ user, mutateUser }) => {
+  const { mutate: mutateUsers } = useUsers() 
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -103,6 +105,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, mutateUser }) => {
 
       if (res.status === 200) {
         mutateUser()
+        mutateUsers()
         toast.success("Success!");
       }
 
