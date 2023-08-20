@@ -31,14 +31,16 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    await prisma.notification.create({
-      data: {
-        type: 'follow',
-        body: 'started following you.',
-        creatorId: currentUserId,
-        userId: userId
-      }
-    })
+    if(currentUserId !== userId){
+      await prisma.notification.create({
+        data: {
+          type: 'follow',
+          body: 'started following you.',
+          creatorId: currentUserId,
+          userId: userId
+        }
+      })
+    }
 
     return NextResponse.json(updatedUser, { status: 200 });
   } catch (err) {

@@ -23,7 +23,6 @@ const NotificationsFeed: React.FC<NotificationsFeedProps> = ({
     </div>
   )
 
-  console.log(notifications)
   if(notifications.length === 0) return (
     <div className='w-full h-fit py-10 flex items-center justify-center'>
       <h3 className='text-xl text-ligthGray font-bold'>You don&apos;t have notifications!</h3>
@@ -32,13 +31,7 @@ const NotificationsFeed: React.FC<NotificationsFeedProps> = ({
   return (
     <>
     {notifications.map((notification: Record<string, any>) => (
-      <>
-      {session.user.id === notification.creator.id ? (
-        null
-      ) : (
-        <Notification notification={notification} />
-      )}
-      </>
+      <Notification notification={notification} />
     ))}
     </>
   )

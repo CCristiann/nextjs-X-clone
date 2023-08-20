@@ -25,14 +25,16 @@ export async function POST(req: NextRequest) {
       });
 
       if(tweet?.creator){
-        await prisma.notification.create({
-          data: {
-            type: 'comment',
-            body: 'commented your tweet.',
-            creatorId: creator,
-            userId: tweet?.creator
-          }
-        })
+        if(creator !== tweet?.creator){
+          await prisma.notification.create({
+            data: {
+              type: 'comment',
+              body: 'commented your tweet.',
+              creatorId: creator,
+              userId: tweet?.creator
+            }
+          })
+        }
       }
 
       await prisma.user.update({
