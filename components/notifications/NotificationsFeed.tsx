@@ -26,7 +26,7 @@ const NotificationsFeed: React.FC<NotificationsFeedProps> = ({
   console.log(notifications)
   if(notifications.length === 0) return (
     <div className='w-full h-fit py-10 flex items-center justify-center'>
-      <h3 className='text-xl text-ligthGray font-bold'>You don't have notifications!</h3>
+      <h3 className='text-xl text-ligthGray font-bold'>You don&apos;t have notifications!</h3>
     </div>
   )
   return (
