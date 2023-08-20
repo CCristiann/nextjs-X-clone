@@ -31,7 +31,7 @@ const NotificationsFeed: React.FC<NotificationsFeedProps> = ({
   return (
     <>
     {notifications.map((notification: Record<string, any>) => (
-      <Notification notification={notification} />
+      <Notification key={notification.id} notification={notification} />
     ))}
     </>
   )
