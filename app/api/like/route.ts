@@ -29,6 +29,15 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    await prisma.notification.create({
+      data: {
+        type: 'like',
+        body: 'liked your tweet.',
+        creatorId: userId,
+        userId: updatedPost.creator
+      }
+    })
+
     return NextResponse.json(updatedPost, { status: 200 });
   } catch (err) {
     console.log(err);

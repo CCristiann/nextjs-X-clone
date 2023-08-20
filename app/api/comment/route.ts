@@ -4,7 +4,7 @@ import prisma from "@/libs/prismadb";
 
 export async function POST(req: NextRequest) {
   try {
-    const { body, image, tweetId, creator } = await req.json();
+    const { body, image, tweetId, creator, creatorName } = await req.json();
 
     if (!tweetId) throw new Error("Invalid tweet ID");
 
@@ -23,6 +23,17 @@ export async function POST(req: NextRequest) {
           id: tweetId,
         },
       });
+
+      if(tweet?.creator){
+        await prisma.notification.create({
+          data: {
+            type: 'comment',
+            body: 'commented your tweet.',
+            creatorId: creator,
+            userId: tweet?.creator
+          }
+        })
+      }
 
       await prisma.user.update({
         where: {
