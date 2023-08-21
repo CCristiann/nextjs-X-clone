@@ -12,8 +12,8 @@ import axios from "axios";
 
 import toast from "react-hot-toast";
 
-import { BsCheckCircleFill } from "react-icons/bs";
-import { BiSolidErrorCircle } from "react-icons/bi";
+import validateEmail from "@/libs/validateEmail";
+import formValidation from "@/libs/formValidation";
 
 type ActionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
@@ -45,9 +45,27 @@ const RegisterModal = () => {
 
   const onSubmit = useCallback(async () => {
     setIsLoading(true);
-    try {
-      const { name, username, email, password } = state;
+    const { name, username, email, password } = state;
 
+    const validation = formValidation(state)
+
+    if(!validation.isValidated && validation.toastMessage){
+      toast.error(validation.toastMessage, {
+        icon: null,
+        style: {
+          backgroundColor: '#1D9BF0',
+          color: '#e7e9ea',
+          width: 'fit-content'
+
+        },
+        position: 'bottom-center'
+      })
+
+      setIsLoading(false)
+      return
+    }
+
+    try {
       const res = await axios.post("/api/register", {
         name,
         username,
@@ -55,16 +73,18 @@ const RegisterModal = () => {
         password,
       });
 
-      setIsLoading(false);
-      toast.success("Success!");
+      if(res.status === 200){
+        toast.success("Success!");
+      }
+
     } catch (err) {
-      setIsLoading(false);
       toast.error("Error :/");
+
     } finally {
+      setIsLoading(false)
       registerModal.onClose();
-      router.push("/");
     }
-  }, [state]);
+  }, [state, registerModal]);
 
   useEffect(() => {
     registerModal.onOpen();

@@ -16,6 +16,9 @@ export async function GET(req: NextRequest, { params } : Props){
             include: {
                 user: true,
                 creator: true
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         })
 

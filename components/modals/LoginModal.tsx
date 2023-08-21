@@ -11,6 +11,9 @@ import toast from "react-hot-toast";
 
 import { BiSolidCheckCircle, BiSolidErrorCircle } from "react-icons/bi";
 
+import validateEmail from "@/libs/validateEmail";
+import formValidation from "@/libs/formValidation";
+
 type ActionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
 const initialState = {
@@ -43,6 +46,24 @@ const LoginModal = () => {
     setIsLoading(true);
     const { email, password } = state;
 
+    const validation = formValidation(state)
+    
+    if(!validation.isValidated && validation.toastMessage){
+      toast.error(validation.toastMessage, {
+        icon: null,
+        style: {
+          backgroundColor: '#1D9BF0',
+          color: '#e7e9ea',
+          width: 'fit-content'
+
+        },
+        position: 'bottom-center'
+      })
+
+      setIsLoading(false)
+      return
+    }
+
     try {
       await signIn("credentials", {
         email,
@@ -50,13 +71,11 @@ const LoginModal = () => {
         redirect: true,
       });
 
-      setIsLoading(false);
       toast.success("Logged in!");
     } catch (err) {
-      setIsLoading(false);
       console.log(err);
-
       toast.error("Error :/");
+
     } finally {
       setIsLoading(false);
       loginModal.onClose();
