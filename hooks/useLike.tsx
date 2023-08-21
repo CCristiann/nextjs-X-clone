@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo } from "react";
-import useCurrentUser from "./useCurrentUser";
+
 import useTweet from "./useTweet";
 import useTweets from "./useTweets";
+
 import axios from "axios";
 import toast from "react-hot-toast";
 

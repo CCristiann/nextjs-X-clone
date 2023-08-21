@@ -1,5 +1,5 @@
 import fetcher from "@/libs/fetcher";
-import React from "react";
+
 import useSWR from "swr";
 
 const useUser = (userId: string) => {

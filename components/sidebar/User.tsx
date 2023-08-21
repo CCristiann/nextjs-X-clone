@@ -1,8 +1,11 @@
 "use client";
 
-import { Session } from "next-auth";
 import React from "react";
+
+import { Session } from "next-auth";
+
 import UserWidget from "../user/UserWidget";
+
 import useUser from "@/hooks/useUser";
 
 type UserProps = {

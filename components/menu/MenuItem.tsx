@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 
 import { IconType } from "react-icons";
@@ -18,9 +17,9 @@ const MenuItem: React.FC<MenuItemProps> = ({
   onClick,
 }) => {
   const onSubmit = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    onClick()
-  }
+    e.stopPropagation();
+    onClick();
+  };
   return (
     <button
       className={`

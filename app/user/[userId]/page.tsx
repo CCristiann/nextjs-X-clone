@@ -1,15 +1,14 @@
 "use client";
 
 import React from "react";
+import { useSession } from "next-auth/react";
 
 import Header from "@/components/Header";
 import UserHero from "@/components/user/UserHero";
-
-import { useSession } from "next-auth/react";
-import useUser from "@/hooks/useUser";
 import UserBio from "@/components/user/UserBio";
-import Loader from "@/components/Loader";
 import TweetsFeed from "@/components/tweets/TweetsFeed";
+
+import useUser from "@/hooks/useUser";
 
 type UserPageProps = {
   params: {

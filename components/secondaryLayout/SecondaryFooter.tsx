@@ -1,7 +1,8 @@
 import React from "react";
 
-import { secondaryFooterLinks } from "@/costants/costants";
 import Link from "next/link";
+
+import { secondaryFooterLinks } from "@/costants/costants";
 
 const SecondaryFooter = () => {
   return (

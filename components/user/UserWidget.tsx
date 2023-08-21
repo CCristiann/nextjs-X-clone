@@ -1,16 +1,15 @@
 "use client";
 
-import useUser from "@/hooks/useUser";
 import React, { useState } from "react";
-
-import Image from "next/image";
-
-import { BsThreeDots } from "react-icons/bs";
 import { useRouter } from "next/navigation";
+
 import Avatar from "./Avatar";
-import { User } from "@prisma/client";
 import Menu from "../menu/Menu";
 import MenuItem from "../menu/MenuItem";
+
+import { BsThreeDots } from "react-icons/bs";
+
+import { User } from "@prisma/client";
 
 type UserWidgetProps = {
   user?: User;

@@ -1,4 +1,3 @@
-import { Twitter } from "next/dist/lib/metadata/types/twitter-types";
 import React from "react";
 
 type TwitterXProps = {

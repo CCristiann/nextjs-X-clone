@@ -1,7 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
-import { NextRequest, NextResponse } from "next/server";
 
-import toast from "react-hot-toast";
+import { NextRequest, NextResponse } from "next/server";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,

@@ -1,11 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-import Modal from "../Modal";
-
-import TwitterX from "../TwitterX";
 import Button from "../Button";
-
-import Loader from "../Loader";
 
 type DeleteModalProps = {
   isOpen?: boolean;

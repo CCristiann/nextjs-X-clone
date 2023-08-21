@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 import Providers from "../Providers";
 import TwitterX from "../TwitterX";
 import Button from "../Button";
 
-import { useRouter } from "next/navigation";
 import useLoginModal from "@/hooks/useLoginModal";
-
 import useTweets from "@/hooks/useTweets";
 
 const SignUpForm = () => {

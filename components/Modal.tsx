@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useCallback } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 import Button from "./Button";
-import { useRouter } from "next/navigation";
 import Loader from "./Loader";
+
+import { AiOutlineClose } from "react-icons/ai";
 
 type ModalProps = {
   isOpen?: boolean;
@@ -94,9 +95,7 @@ const Modal: React.FC<ModalProps> = ({
           <>
             <div
               className={`
-          ${
-            hasTransparentHeader && "bg-black/40 backdrop-blur-md sticky top-0"
-          }
+          ${hasTransparentHeader && "bg-black/40 backdrop-blur-md sticky top-0"}
           flex justify-between items-center px-3 py-1.5 z-50
         `}
             >

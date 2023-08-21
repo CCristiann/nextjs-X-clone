@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
-import useCurrentUser from "./useCurrentUser";
+
 import useUser from "./useUser";
-import { User } from "@prisma/client";
+
 import axios from "axios";
 
 const useFollow = (userId: string, currentUserId: string) => {

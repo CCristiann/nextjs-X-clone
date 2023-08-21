@@ -5,17 +5,17 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
-const NotificationsPage = async() => {
-  const session = await getServerSession(authOptions)
+const NotificationsPage = async () => {
+  const session = await getServerSession(authOptions);
 
-  if(!session) redirect('/')
-  
+  if (!session) redirect("/");
+
   return (
     <>
-    <Header label="Notifications" showBackArrow />
-    <NotificationsFeed session={session} />
+      <Header label="Notifications" showBackArrow />
+      <NotificationsFeed session={session} />
     </>
-  )
+  );
 };
 
 export default NotificationsPage;

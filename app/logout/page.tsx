@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import Button from "@/components/Button";
 import Loader from "@/components/Loader";
 import TwitterX from "@/components/TwitterX";
+
 import { signOut } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
-import React from "react";
 
 const LogoutPage = () => {
   const router = useRouter();

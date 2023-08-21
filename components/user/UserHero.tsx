@@ -1,10 +1,11 @@
-import { User } from "@prisma/client";
+import React, { ChangeEvent } from "react";
+
 import Image from "next/image";
-import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import Avatar from "./Avatar";
 
 import { MdOutlineAddAPhoto } from "react-icons/md";
-import Loader from "../Loader";
+
+import { User } from "@prisma/client";
 
 type UserHeroProps = {
   user?: User;

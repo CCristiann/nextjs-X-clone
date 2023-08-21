@@ -1,12 +1,10 @@
 import React from "react";
 
-import SidebarItem from "./SidebarItem";
-import TweetBtn from "./TweetBtn";
-import UserWidget from "../user/UserWidget";
-
-import TwitterX from "../TwitterX";
 import { Session } from "next-auth";
 
+import SidebarItem from "./SidebarItem";
+import TweetBtn from "./TweetBtn";
+import TwitterX from "../TwitterX";
 import User from "./User";
 
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
@@ -38,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({ session }) => {
       href: `/user/${session.user.id}`,
       icon: FaUser,
     },
-  ]
+  ];
 
   return (
     <div className="fixed bottom-0 border-t-[1px] border-neutral-800 w-screen flex justify-center md:max-h-screen md:sticky md:top-0 md:w-fit md:flex-col md:justify-between md:items-center paddings bg-black z-50">

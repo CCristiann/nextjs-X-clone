@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { getServerSession } from "next-auth";
 
 import Header from "@/components/Header";
-import LoginModal from "@/components/modals/LoginModal";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/libs/authOptions";
-import Loader from "@/components/Loader";
 import Form from "@/components/Form";
 import TweetsFeed from "@/components/tweets/TweetsFeed";
+
+import { authOptions } from "@/libs/authOptions";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);

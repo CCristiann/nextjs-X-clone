@@ -1,43 +1,31 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Post } from "@prisma/client";
-import React from "react";
+import React, { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { Session } from "next-auth";
+
+import Image from "next/image";
+import Form from "../Form";
+import Menu from "@/components/menu/Menu";
+import MenuItem from "../menu/MenuItem";
+import DeleteModal from "../modals/DeleteModal";
 import Avatar from "../user/Avatar";
-import useUser from "@/hooks/useUser";
-import useTweets from "@/hooks/useTweets";
 
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import format from "date-fns/format";
-import Image from "next/image";
-
-import { PiTwitterLogo } from 'react-icons/pi'
-import { BsTrash3 } from "react-icons/bs";
-import { IoPersonAddOutline, IoPersonOutline } from 'react-icons/io5'
-import {
-  AiFillHeart,
-  AiOutlineComment,
-  AiOutlineHeart,
-  AiOutlineMessage,
-} from "react-icons/ai";
-
-import { useRouter } from "next/navigation";
-import Form from "../Form";
-import { Session } from "next-auth";
-
-import useLike from "@/hooks/useLike";
-import useTweet from "@/hooks/useTweet";
-import { BsThreeDots } from "react-icons/bs";
-
-import Menu from "@/components/menu/Menu";
-import MenuItem from "../menu/MenuItem";
-
-import DeleteModal from "../modals/DeleteModal";
 
 import axios from "axios";
 import toast from "react-hot-toast";
 import useFollow from "@/hooks/useFollow";
-import { FaTwitter, FaUser } from "react-icons/fa";
+import useTweets from "@/hooks/useTweets";
+import useLike from "@/hooks/useLike";
+
+import useTweet from "@/hooks/useTweet";
+import { PiTwitterLogo } from "react-icons/pi";
+import { IoPersonAddOutline, IoPersonOutline } from "react-icons/io5";
+import { AiFillHeart, AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
+import { BsThreeDots, BsTrash3 } from "react-icons/bs";
 
 type TweetProps = {
   tweet: Record<string, any>;
@@ -57,7 +45,10 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
     userId: session.user.id,
   });
 
-  const { isFollowing, toggleFollow } = useFollow(tweet.user.id, session.user.id)
+  const { isFollowing, toggleFollow } = useFollow(
+    tweet.user.id,
+    session.user.id,
+  );
 
   const onLike = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -79,8 +70,8 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
     try {
       await axios.delete(`/api/tweets/${tweet.id}`);
 
-      mutateTweets()
-      mutateTweet()
+      mutateTweets();
+      mutateTweet();
       toast.success("Success");
     } catch (err) {
       toast.error("Error :/");
@@ -99,7 +90,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
     });
   }, [tweet.createdAt]);
 
-  const { mutate: mutateTweets } = useTweets()
+  const { mutate: mutateTweets } = useTweets();
   const { data: fetchedTweet, mutate: mutateTweet } = useTweet(tweet.id);
 
   if (isForTweetPage) {
@@ -233,21 +224,21 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
                       onClick={() => setIsDeleteModalOpen(true)}
                     />
                   )}
-                  <MenuItem 
-                  label="View tweet"
-                  color="lightGray"
-                  icon={PiTwitterLogo}
-                  onClick={() => router.push(`/tweet/${tweet.id}`)}
+                  <MenuItem
+                    label="View tweet"
+                    color="lightGray"
+                    icon={PiTwitterLogo}
+                    onClick={() => router.push(`/tweet/${tweet.id}`)}
                   />
                   {session.user.id !== tweet.user.id && (
-                    <MenuItem 
-                    label={` 
-                      ${isFollowing ? 'Unfollow' : 'Follow'}
+                    <MenuItem
+                      label={` 
+                      ${isFollowing ? "Unfollow" : "Follow"}
                       @${tweet.user.username}
                     `}
-                    icon={IoPersonAddOutline}
-                    color="lightGray"
-                    onClick={toggleFollow}
+                      icon={IoPersonAddOutline}
+                      color="lightGray"
+                      onClick={toggleFollow}
                     />
                   )}
                   <MenuItem

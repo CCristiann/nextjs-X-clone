@@ -29,15 +29,15 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    if(userId !== updatedPost.creator){
+    if (userId !== updatedPost.creator) {
       await prisma.notification.create({
         data: {
-          type: 'like',
-          body: 'liked your tweet.',
+          type: "like",
+          body: "liked your tweet.",
           creatorId: userId,
-          userId: updatedPost.creator
-        }
-      })
+          userId: updatedPost.creator,
+        },
+      });
     }
 
     return NextResponse.json(updatedPost, { status: 200 });

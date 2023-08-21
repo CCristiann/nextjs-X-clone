@@ -1,13 +1,16 @@
 "use client";
 
-import useFormModal from "@/hooks/useFormModal";
-import Modal from "../Modal";
 import React, { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
+import { Session } from "next-auth";
+
+import Modal from "../Modal";
+import Form from "../Form";
+
+import useFormModal from "@/hooks/useFormModal";
 
 import { AiOutlineClose } from "react-icons/ai";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Form from "../Form";
-import { Session } from "next-auth";
 
 type FormModalProps = {
   session: Session;

@@ -6,6 +6,7 @@ import Loader from "../Loader";
 import UserWidget from "../user/UserWidget";
 
 import useUsers from "@/hooks/useUsers";
+
 import { User } from "@prisma/client";
 
 const FollowbarUsers = () => {

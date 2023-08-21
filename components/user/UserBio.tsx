@@ -1,17 +1,19 @@
 "use client";
-import { User } from "@prisma/client";
-import Button from "@/components/Button";
+
 import React, { useMemo } from "react";
-import { Session, getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+import { Session } from "next-auth";
+
+import Link from "next/link";
+import Button from "@/components/Button";
 
 import { format } from "date-fns";
+import useFollow from "@/hooks/useFollow";
+import { User } from "@prisma/client";
+
 import { BiCalendar, BiLink } from "react-icons/bi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import useFollow from "@/hooks/useFollow";
 
 type UserBioProps = {
   user: User;

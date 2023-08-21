@@ -1,29 +1,26 @@
 "use client";
 
-import Avatar from "@/components/user/Avatar";
-import { Session, getServerSession } from "next-auth";
 import React, { ChangeEvent, useReducer, useState } from "react";
+import { useRouter } from "next/navigation";
 
+import { Session } from "next-auth";
+
+import Image from "next/image";
+import Avatar from "@/components/user/Avatar";
 import Button from "@/components/Button";
+import Loader from "./Loader";
+
+import useUser from "@/hooks/useUser";
+import useTweets from "@/hooks/useTweets";
+
+import axios from "axios";
+import upload from "@/libs/upload";
+import toast from "react-hot-toast";
 
 import { PiImageSquareBold } from "react-icons/pi";
 import { HiOutlineEmojiHappy } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
-
-import { Icon } from "next/dist/lib/metadata/types/metadata-types";
 import { IconType } from "react-icons";
-
-import Image from "next/image";
-
-import axios from "axios";
-import useUser from "@/hooks/useUser";
-import upload from "@/libs/upload";
-import toast from "react-hot-toast";
-import { Post } from "@prisma/client";
-import { useRouter } from "next/navigation";
-import Loader from "./Loader";
-import useTweets from "@/hooks/useTweets";
-import { useSWRConfig } from "swr";
 
 type actionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
@@ -81,7 +78,7 @@ const Form: React.FC<FormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { mutate: mutateTweets } = useTweets()
+  const { mutate: mutateTweets } = useTweets();
 
   const { data: user } = useUser(session.user.id);
   if (!user) return null;
@@ -133,7 +130,7 @@ const Form: React.FC<FormProps> = ({
         });
 
         if (res.status === 200) {
-          mutateTweets()
+          mutateTweets();
           toast.success("Success!");
         }
       } catch (err) {
@@ -149,7 +146,7 @@ const Form: React.FC<FormProps> = ({
         });
 
         if (res.status === 200) {
-          mutateTweets()
+          mutateTweets();
           toast.success("Success!");
         }
       } catch (err) {

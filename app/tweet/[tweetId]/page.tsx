@@ -1,15 +1,14 @@
 "use client";
 
+import React from "react";
+import { useSession } from "next-auth/react";
+
 import Header from "@/components/Header";
 import Loader from "@/components/Loader";
-import Comment from "@/components/tweets/Comment";
 import CommentsFeed from "@/components/tweets/CommentsFeed";
 import Tweet from "@/components/tweets/Tweet";
+
 import useTweet from "@/hooks/useTweet";
-import { Session } from "inspector";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import React from "react";
 
 type PageProps = {
   params: {

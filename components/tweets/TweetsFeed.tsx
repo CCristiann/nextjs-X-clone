@@ -1,11 +1,15 @@
 "use client";
 
-import useTweets from "@/hooks/useTweets";
-import React, { useEffect, useState } from "react";
+import React from "react";
+
+import { Session } from "next-auth";
+
 import Loader from "../Loader";
 import Tweet from "./Tweet";
+
+import useTweets from "@/hooks/useTweets";
+
 import { Post, User } from "@prisma/client";
-import { Session } from "next-auth";
 
 type TweetsFeedProps = {
   user?: User;

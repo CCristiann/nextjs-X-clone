@@ -1,8 +1,3 @@
-import { BsHouseFill, BsBellFill } from "react-icons/bs";
-import { FaSearch, FaUser } from "react-icons/fa";
-import { HiOutlineEmojiHappy } from "react-icons/hi";
-import { PiImageSquareBold } from "react-icons/pi";
-
 export const secondaryFooterLinks = [
   {
     label: "About",

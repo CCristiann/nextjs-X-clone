@@ -12,7 +12,6 @@ import axios from "axios";
 
 import toast from "react-hot-toast";
 
-import validateEmail from "@/libs/validateEmail";
 import formValidation from "@/libs/formValidation";
 
 type ActionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
@@ -47,22 +46,21 @@ const RegisterModal = () => {
     setIsLoading(true);
     const { name, username, email, password } = state;
 
-    const validation = formValidation(state)
+    const validation = formValidation(state);
 
-    if(!validation.isValidated && validation.toastMessage){
+    if (!validation.isValidated && validation.toastMessage) {
       toast.error(validation.toastMessage, {
         icon: null,
         style: {
-          backgroundColor: '#1D9BF0',
-          color: '#e7e9ea',
-          width: 'fit-content'
-
+          backgroundColor: "#1D9BF0",
+          color: "#e7e9ea",
+          width: "fit-content",
         },
-        position: 'bottom-center'
-      })
+        position: "bottom-center",
+      });
 
-      setIsLoading(false)
-      return
+      setIsLoading(false);
+      return;
     }
 
     try {
@@ -73,15 +71,13 @@ const RegisterModal = () => {
         password,
       });
 
-      if(res.status === 200){
+      if (res.status === 200) {
         toast.success("Success!");
       }
-
     } catch (err) {
       toast.error("Error :/");
-
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
       registerModal.onClose();
     }
   }, [state, registerModal]);

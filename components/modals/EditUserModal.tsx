@@ -1,24 +1,19 @@
 "use client";
 
-import useEditUserModal from "@/hooks/useEditUserModal";
-import Modal from "../Modal";
-import React, { useCallback, useEffect, useReducer, useState } from "react";
-import Input from "../Input";
-import UserHero from "../user/UserHero";
-import { useSession } from "next-auth/react";
-import useUser from "@/hooks/useUser";
-import { Session } from "next-auth";
-import { User } from "@prisma/client";
-import axios from "axios";
+import React, { useEffect, useReducer, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import toast from "react-hot-toast";
+import Modal from "../Modal";
+import Input from "../Input";
+import UserHero from "../user/UserHero";
 
-import { BiSolidCheckCircle } from "react-icons/bi";
-import Loader from "../Loader";
-import { stat } from "fs";
+import toast from "react-hot-toast";
+import axios from "axios";
+import useEditUserModal from "@/hooks/useEditUserModal";
 import upload from "@/libs/upload";
 import useUsers from "@/hooks/useUsers";
+
+import { User } from "@prisma/client";
 
 type actionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
@@ -28,7 +23,7 @@ type EditUserModalProps = {
 };
 
 const EditUserModal: React.FC<EditUserModalProps> = ({ user, mutateUser }) => {
-  const { mutate: mutateUsers } = useUsers() 
+  const { mutate: mutateUsers } = useUsers();
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -67,15 +62,15 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, mutateUser }) => {
       !state.website.startsWith("https://") &&
       state.website !== ""
     ) {
-      toast.error('Account update failed: Url is not valid', {
+      toast.error("Account update failed: Url is not valid", {
         icon: null,
         style: {
-          backgroundColor: '#1D9BF0',
-          color: '#e7e9ea',
-          width: 'fit-content'
+          backgroundColor: "#1D9BF0",
+          color: "#e7e9ea",
+          width: "fit-content",
         },
-        position: 'bottom-center'
-      })
+        position: "bottom-center",
+      });
       return;
     }
 
@@ -104,14 +99,12 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, mutateUser }) => {
       });
 
       if (res.status === 200) {
-        mutateUser()
-        mutateUsers()
+        mutateUser();
+        mutateUsers();
         toast.success("Success!");
       }
-
     } catch (err) {
-        toast.error('Error :/')
-
+      toast.error("Error :/");
     } finally {
       editUserModal.onClose();
       setIsLoading(false);

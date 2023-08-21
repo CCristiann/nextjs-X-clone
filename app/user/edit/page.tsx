@@ -1,10 +1,10 @@
 "use client";
 
+import React from "react";
+import { useSession } from "next-auth/react";
+
 import EditUserModal from "@/components/modals/EditUserModal";
 import useUser from "@/hooks/useUser";
-import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
-import React, { useEffect } from "react";
 
 const EditUserPage = () => {
   const { data: session } = useSession();

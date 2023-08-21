@@ -1,14 +1,16 @@
+import { ReactNode } from "react";
+import { getServerSession } from "next-auth";
+
 import { Toaster } from "react-hot-toast";
 import "../styles/global.css";
 
 import { Poppins } from "next/font/google";
+
 import Sidebar from "@/components/sidebar/Sidebar";
 import Followbar from "@/components/followbar/Followbar";
-
 import SecondaryLayout from "@/components/secondaryLayout/SecondaryLayout";
 import NextAuthSessionProvider from "@/components/NextAuthSessionProvider";
-import { ReactNode } from "react";
-import { getServerSession } from "next-auth";
+
 import { authOptions } from "@/libs/authOptions";
 
 const poppins = Poppins({
@@ -63,7 +65,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children }) => {
                 primary: "#ef4444",
                 secondary: "#FFFFFF",
               },
-            }
+            },
           }}
         />
       </body>

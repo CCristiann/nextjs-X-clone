@@ -1,7 +1,8 @@
 "use client";
+
 import React from "react";
 
-import { DarkThemeToggle, Flowbite, Spinner } from "flowbite-react";
+import { Spinner } from "flowbite-react";
 
 type LoaderProps = {
   message?: string;

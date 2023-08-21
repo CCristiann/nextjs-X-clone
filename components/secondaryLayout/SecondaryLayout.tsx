@@ -1,7 +1,6 @@
 import React from "react";
 
 import SecondaryFooter from "./SecondaryFooter";
-
 import Banner from "./Banner";
 import SignUpForm from "./SignUpForm";
 

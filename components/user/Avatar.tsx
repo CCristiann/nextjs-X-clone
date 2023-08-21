@@ -1,10 +1,11 @@
 "use client";
 
-import useUser from "@/hooks/useUser";
 import React from "react";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+import Image from "next/image";
+
 import { User } from "@prisma/client";
 
 type AvatarProps = {

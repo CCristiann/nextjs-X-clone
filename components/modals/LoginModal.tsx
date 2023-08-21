@@ -1,17 +1,13 @@
 "use client";
 
-import useLoginModal from "@/hooks/useLoginModal";
 import React, { useCallback, useEffect, useReducer, useState } from "react";
+import { signIn } from "next-auth/react";
+
 import Modal from "../Modal";
 import Input from "@/components/Input";
-import { signIn, useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
 
+import useLoginModal from "@/hooks/useLoginModal";
 import toast from "react-hot-toast";
-
-import { BiSolidCheckCircle, BiSolidErrorCircle } from "react-icons/bi";
-
-import validateEmail from "@/libs/validateEmail";
 import formValidation from "@/libs/formValidation";
 
 type ActionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
@@ -46,22 +42,21 @@ const LoginModal = () => {
     setIsLoading(true);
     const { email, password } = state;
 
-    const validation = formValidation(state)
-    
-    if(!validation.isValidated && validation.toastMessage){
+    const validation = formValidation(state);
+
+    if (!validation.isValidated && validation.toastMessage) {
       toast.error(validation.toastMessage, {
         icon: null,
         style: {
-          backgroundColor: '#1D9BF0',
-          color: '#e7e9ea',
-          width: 'fit-content'
-
+          backgroundColor: "#1D9BF0",
+          color: "#e7e9ea",
+          width: "fit-content",
         },
-        position: 'bottom-center'
-      })
+        position: "bottom-center",
+      });
 
-      setIsLoading(false)
-      return
+      setIsLoading(false);
+      return;
     }
 
     try {
@@ -75,7 +70,6 @@ const LoginModal = () => {
     } catch (err) {
       console.log(err);
       toast.error("Error :/");
-
     } finally {
       setIsLoading(false);
       loginModal.onClose();
