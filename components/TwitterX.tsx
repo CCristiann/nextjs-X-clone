@@ -6,7 +6,9 @@ type TwitterXProps = {
 };
 const TwitterX: React.FC<TwitterXProps> = ({ color, size }) => {
   size =
-    size == "xs"
+    size == "2xs"
+      ? '30'
+      : size === 'xs'
       ? "40"
       : size == "sm"
       ? "75"

@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useCallback, useEffect, useReducer, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+
 import { signIn } from "next-auth/react";
 
 import Modal from "../Modal";
@@ -29,6 +31,7 @@ const reducer = (state = initialState, action: ActionProps) => {
   }
 };
 const LoginModal = () => {
+  const router = useRouter()
   const loginModal = useLoginModal();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -60,19 +63,34 @@ const LoginModal = () => {
     }
 
     try {
-      await signIn("credentials", {
+      const res = await signIn("credentials", {
         email,
         password,
-        redirect: true,
+        redirect: false,
       });
+
+      if(res?.error){
+        toast.error(res.error, {
+          icon: null,
+          style: {
+            backgroundColor: "#1D9BF0",
+            color: "#e7e9ea",
+            width: "fit-content",
+          },
+          position: "bottom-center",
+        });
+        router.push('/')
+        return
+      }
 
       toast.success("Logged in!");
     } catch (err) {
-      console.log(err);
-      toast.error("Error :/");
+      
     } finally {
       setIsLoading(false);
       loginModal.onClose();
+      router.push('/')
+      router.refresh()
     }
   }, [state, loginModal]);
 

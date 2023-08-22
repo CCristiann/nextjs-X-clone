@@ -7,6 +7,7 @@ type MenuProps = {
   setIsOpen: () => void;
   userWidget?: boolean;
   tweetMenu?: boolean;
+  headerMenu?: boolean;
 };
 const Menu: React.FC<MenuProps> = ({
   children,
@@ -14,6 +15,7 @@ const Menu: React.FC<MenuProps> = ({
   setIsOpen,
   userWidget,
   tweetMenu,
+  headerMenu
 }) => {
   const overlay = useRef<HTMLDivElement>(null);
   const wrapper = useRef<HTMLDivElement>(null);
@@ -27,7 +29,6 @@ const Menu: React.FC<MenuProps> = ({
       e.stopPropagation();
 
       if (e.target === overlay.current && onClose) {
-        console.log("test");
         onClose();
       }
     },
@@ -47,6 +48,7 @@ const Menu: React.FC<MenuProps> = ({
           className={`
       ${userWidget && "bottom-20 py-5"}
       ${tweetMenu && "top-0 right-0"}
+      ${headerMenu && "top-16 left-6"}
       absolute w-fit h-fit rounded-xl bg-black shadow-sm shadow-white z-40
     `}
         >

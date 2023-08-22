@@ -54,6 +54,7 @@ export const authOptions: NextAuthOptions = {
 
       session.user.id = existingUser?.id.toString();
       session.user.image = existingUser?.profileImage;
+      session.user.username = existingUser?.username;
       return session;
     },
   },

@@ -13,7 +13,7 @@ const Home = async () => {
 
   return (
     <>
-      <Header label="Home" />
+      <Header label="Home" session={session} />
       <Form
         session={session}
         placeholder="What is happening?!"

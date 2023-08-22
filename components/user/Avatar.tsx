@@ -36,7 +36,7 @@ const Avatar: React.FC<AvatarProps> = ({
     : user.profileImage
     ? user.profileImage
     : "/assets/images/user-placeholder.png";
-
+    
   return (
     <>
       {isClickable ? (
