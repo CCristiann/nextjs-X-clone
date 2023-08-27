@@ -6,7 +6,7 @@
 
 X clone
 
-👉 **Live Demo**: [Live Demo](https://twitter-ccristiann.vercel.app)
+👉 **Live Demo**: [Live Demo](https://x-ccristiann.vercel.app)
 
 **Build with:** \
 » Next JS \
