@@ -4,7 +4,7 @@
 
 # About the project
 
-Twitter clone
+X clone
 
 👉 **Live Demo**: [Live Demo](https://twitter-ccristiann.vercel.app)
 
