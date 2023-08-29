@@ -72,9 +72,27 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
 
       mutateTweets();
       mutateTweet();
-      toast.success("Success");
+      toast.success("Your tweet was deleted.", {
+        icon: null,
+        style: {
+          backgroundColor: "#1D9BF0",
+          color: "#e7e9ea",
+          width: "fit-content",
+        },
+        position: "bottom-center",
+      });
+
     } catch (err) {
-      toast.error("Error :/");
+      toast.error("Tweet deletion failed.", {
+        icon: null,
+        style: {
+          backgroundColor: "#1D9BF0",
+          color: "#e7e9ea",
+          width: "fit-content",
+        },
+        position: "bottom-center",
+      });
+      
     } finally {
       setIsDeleteModalOpen(false);
       setIsMenuOpen(false);
