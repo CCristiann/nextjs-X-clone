@@ -4,13 +4,30 @@ import Avatar from "../user/Avatar";
 
 import { PiStarFourFill } from "react-icons/pi";
 import { AiFillHeart } from "react-icons/ai";
+import axios from "axios";
 
 type NotificationProps = {
   notification: Record<string, any>;
 };
 
 const Notification: React.FC<NotificationProps> = ({ notification }) => {
-  console.log(notification);
+  
+  const isMarkedForDeletion = (_createdAt: Date) => {
+    const createdAt = new Date(_createdAt).getTime()
+    const currentDate = new Date().getTime()
+    const timeDifference = Math.abs(currentDate - createdAt)
+
+    const msInADay = 24 * 60 * 60 * 1000
+
+    const daysDifference = timeDifference / msInADay
+
+    if(daysDifference > 8) return true
+    return false
+  }
+
+  if(isMarkedForDeletion(notification.createdAt)){
+    axios.delete(`/api/notifications/${notification.user.id}/${notification.id}`)
+  }
 
   return (
     <div className="flex w-full h-fit py-2 border-b-[1px] border-neutral-800 hover:bg-slate-400 hover:bg-opacity-5 duration-100 cursor-pointer">

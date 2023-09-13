@@ -9,12 +9,27 @@ import User from "./User";
 
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { FaUser, FaSearch } from "react-icons/fa";
+import useUser from "@/hooks/useUser";
+
+import prisma from '@/libs/prismadb'
 
 type SidebarProps = {
   session: Session;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ session }) => {
+const Sidebar: React.FC<SidebarProps> = async({ session }) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: session.user.id
+    }
+  })
+
+  const notificationsCount = await prisma.notification.count({
+    where: {
+      userId: user?.id
+    }
+  })
+
   const sidebarLinks = [
     {
       label: "Home",
@@ -37,6 +52,8 @@ const Sidebar: React.FC<SidebarProps> = ({ session }) => {
       icon: FaUser,
     },
   ];
+  
+  if(!user) return null
 
   return (
     <div className="fixed bottom-0 border-t-[1px] border-neutral-800 w-screen flex justify-center md:max-h-screen md:sticky md:top-0 md:w-fit md:flex-col md:justify-between md:items-center paddings bg-black z-50">
@@ -51,7 +68,7 @@ const Sidebar: React.FC<SidebarProps> = ({ session }) => {
               label={link.label}
               href={link.href}
               icon={link.icon}
-              onClick={() => {}}
+              notificationsCount={notificationsCount}
             />
           ))}
           <TweetBtn />
