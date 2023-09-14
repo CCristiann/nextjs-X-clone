@@ -19,6 +19,11 @@ const poppins = Poppins({
   display: "swap",
 });
 
+export const metadata = {
+  title: 'X Clone',
+  description: 'X Clone made with NextJS App Router.'
+}
+
 type RootLayoutProps = {
   children: ReactNode;
 };

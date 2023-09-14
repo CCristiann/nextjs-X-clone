@@ -9,9 +9,6 @@ const validateEmail = (email: string) => {
 const formValidation = (state: any) => {
   const { name, username, email, password } = state;
 
-  let isValidated;
-  let toastMessage;
-
   if (name === "") {
     return {
       isValidated: false,
