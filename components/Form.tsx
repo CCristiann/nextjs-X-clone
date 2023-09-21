@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, useReducer, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Session } from "next-auth";
 
@@ -16,11 +16,13 @@ import useTweets from "@/hooks/useTweets";
 import axios from "axios";
 import upload from "@/libs/upload";
 import toast from "react-hot-toast";
+import { TweetCreationRequest } from '@/libs/validators/tweet'
 
 import { PiImageSquareBold } from "react-icons/pi";
 import { HiOutlineEmojiHappy } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
 import { IconType } from "react-icons";
+import { CommentCreationRequest } from "@/libs/validators/comment";
 
 type actionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
@@ -74,6 +76,7 @@ const Form: React.FC<FormProps> = ({
   isModal,
 }) => {
   const router = useRouter();
+  const pathName = usePathname();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -123,11 +126,12 @@ const Form: React.FC<FormProps> = ({
 
     if (buttonLabel === "Post") {
       try {
-        const res = await axios.post("/api/tweets/create", {
+        const payload: TweetCreationRequest = {
           body,
           image,
-          creator,
-        });
+          creator
+        }
+        const res = await axios.post("/api/tweets/create", payload);
 
         if (res.status === 200) {
           mutateTweets();
@@ -138,12 +142,14 @@ const Form: React.FC<FormProps> = ({
       }
     } else if (buttonLabel === "Reply") {
       try {
-        const res = await axios.post("/api/comment", {
+        const payload: CommentCreationRequest = {
           body,
           image,
           creator,
-          tweetId,
-        });
+          tweetId
+        }
+
+        const res = await axios.post("/api/comment", payload);
 
         if (res.status === 200) {
           mutateTweets();
@@ -164,7 +170,7 @@ const Form: React.FC<FormProps> = ({
   return (
     <div
       className={`
-      ${!isModal && "border-b-[1px] border-neutral-800 px-1.5"}
+      ${!isModal && pathName !== `/tweet/${tweetId}` && "border-b-[1px] border-neutral-800 px-1.5"}
       flex flex-col py-1.5 relative
     `}
     >

@@ -1,3 +1,4 @@
+import { UploadValidator } from "@/libs/validators/upload";
 import { v2 as cloudinary } from "cloudinary";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -9,7 +10,8 @@ cloudinary.config({
 });
 
 export async function POST(req: NextRequest) {
-  const { path } = await req.json();
+  const reqBody = await req.json()
+  const { path } = UploadValidator.parse(reqBody);
 
   if (!path) return new Response("Image path is required.", { status: 400 });
 

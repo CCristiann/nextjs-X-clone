@@ -13,6 +13,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 import formValidation from "@/libs/formValidation";
+import { UserCreationRequest } from "@/libs/validators/user";
 
 type ActionProps = { type: "UPDATE_INPUT"; KEY: string; value: string };
 
@@ -64,12 +65,14 @@ const RegisterModal = () => {
     }
 
     try {
-      const res = await axios.post("/api/register", {
+      const payload: UserCreationRequest = {
         name,
         username,
         email,
-        password,
-      });
+        password
+      }
+
+      const res = await axios.post("/api/register", payload);
 
       if (res.status === 200) {
         toast.success("Success!");
