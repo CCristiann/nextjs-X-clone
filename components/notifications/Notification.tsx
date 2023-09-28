@@ -56,8 +56,8 @@ const Notification: React.FC<NotificationProps> = ({ notification }) => {
           </div>
           <p className="py-3 text-neutral-500 text-sm">{createdAt}</p>
         </div>
-        <p className="text-base text-neutral-500 flex gap-2.5">
-          <span className="font-semibold text-ligthGray">
+        <p className="text-sm text-neutral-500 flex gap-x-2.5 break-words flex-wrap">
+          <span className="font-semibold text-ligthGray break-words">
             {notification.creator.name}
           </span>
           {notification.body}

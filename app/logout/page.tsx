@@ -7,18 +7,30 @@ import Loader from "@/components/Loader";
 import TwitterX from "@/components/TwitterX";
 
 import { signOut } from "next-auth/react";
+import toast from "react-hot-toast";
 
 const LogoutPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogout = async () => {
-    setIsLoading(true);
-    setTimeout(async () => {
-      await signOut();
-      setIsLoading(false);
-      router.push("/");
-    }, 700);
+    setIsLoading(true)
+    try{
+      await signOut({
+        redirect: false
+      })
+
+      setTimeout(() => {
+        setIsLoading(false)
+        router.push('/')
+        router.refresh()
+      }, 700)
+
+
+    }catch(err){
+      toast.error('Failed to log out.')
+    }
+    
   };
   return (
     <div className="z-[999] absolute top-0 left-0 w-screen h-screen bg-slate-700 flex justify-center items-center">

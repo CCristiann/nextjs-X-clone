@@ -51,7 +51,14 @@ const UserWidget: React.FC<UserWidgetProps> = ({
           </div>
           <div className="hidden lg:flex flex-col">
             <h4 className="font-semibold text-ligthGray text-sm">
-              {user.name}
+              {user.name && (
+                <>
+                {user.name.length > 10
+                  ? `${user.name.slice(0, 10)}...`
+                  : user.name
+                }
+                </>
+              )}
             </h4>
             <p className="text-neutral-500 text-sm">@{user.username}</p>
           </div>

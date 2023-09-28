@@ -23,9 +23,9 @@ const Comment: React.FC<CommentProps> = ({ comment }) => {
         </div>
       </div>
       <div className="flex flex-col px-3 py-2 w-full gap-4">
-        <div>
+        <div className="flex flex-col gap-2">
           <div className="flex gap-3 items-center">
-            <p className="text-base text-ligthGray font-semibold">
+            <p className="text-sm text-ligthGray font-semibold">
               {comment.user.name}
             </p>
             <p className="text-neutral-500 text-sm">@{comment.user.username}</p>
@@ -34,7 +34,7 @@ const Comment: React.FC<CommentProps> = ({ comment }) => {
             </div>
             <p className="text-neutral-500 text-sm">{createdAt}</p>
           </div>
-          <p className="text-base text-ligthGray">{comment.body}</p>
+          <p className="text-sm text-ligthGray">{comment.body}</p>
         </div>
 
         {comment.image && (

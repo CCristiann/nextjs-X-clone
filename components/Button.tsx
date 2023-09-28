@@ -40,7 +40,7 @@ const Button: React.FC<ButtonProps> = ({
       rounded-full font-semibold disabled:opacity-70 disabled:cursor-not-allowed hover:bg-opacity-20 duration-150
       ${Icon && "flex justify-center items-center gap-3 text-sm"}
       ${fullWidth && "w-full"}
-      ${large ? "text-xl px-5 py-3" : "text-md px-4"}
+      ${large ? "text-lg px-5 py-3" : "text-sm px-4"}
       ${additionalPadding ? "py-2.5" : "py-2"}
       ${
         outlineStyle &&

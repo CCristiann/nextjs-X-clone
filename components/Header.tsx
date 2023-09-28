@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ label, showBackArrow, session }) => {
       )}
       {label === 'Home' && session ? (
         <>
-        <div className="px-1">
+        <div className="px-1 block md:hidden">
           <img 
           src={session.user.image} 
           className="w-10 h-10 rounded-full md:hidden"
@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ label, showBackArrow, session }) => {
           <TwitterX color="lightGray" size="xs" />
         </div>
 
-        <h3 className="text-white font-semibold text-xl px-2 hidden md:block">{label}</h3>
+        <h3 className="text-white font-semibold text-xl hidden md:block">{label}</h3>
         
         <Menu
               setIsOpen={() => setIsOpen(!isOpen)}
@@ -73,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({ label, showBackArrow, session }) => {
       )}
       </div>
       {label === "Home" && (
-        <div className="w-full text-white flex items-center justify-center">
+        <div className="text-sm w-full text-white flex items-center justify-center">
           <button className="w-[50%] hover:bg-slate-400 hover:bg-opacity-10 duration-100 py-3">
             For you
           </button>

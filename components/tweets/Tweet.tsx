@@ -103,9 +103,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
   const time = format(new Date(tweet.createdAt), "p");
 
   const createdAt = useMemo(() => {
-    return formatDistanceToNowStrict(new Date(tweet.createdAt), {
-      addSuffix: true,
-    });
+    return formatDistanceToNowStrict(new Date(tweet.createdAt));
   }, [tweet.createdAt]);
 
   const { mutate: mutateTweets } = useTweets();
@@ -120,7 +118,13 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
               <Avatar user={tweet.user} isClickable />
             </div>
             <div className="flex flex-col">
-              <p className="text-base text-ligthGray font-semibold">
+              <p className="md:hidden text-base text-ligthGray font-semibold break-words">
+                {tweet.user.name.length > 28
+                  ? `${tweet.user.name.slice(0, 28)}...`
+                  : tweet.user.name
+                }
+              </p>
+              <p className="hidden md:block text-base text-ligthGray font-semibold break-words">
                 {tweet.user.name}
               </p>
               <p className="text-neutral-500 text-sm">@{tweet.user.username}</p>
@@ -141,14 +145,14 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
 
           <div>
             <div className="flex items-center gap-2 border-b-[1px] border-neutral-800">
-              <p className="py-3 text-neutral-500 text-base">{time}</p>
+              <p className="py-3 text-neutral-500 text-sm">{time}</p>
               <div className="relative w-[3px] h-[3px]">
                 <Image src="/assets/icons/dot.svg" fill alt="Dot" />
               </div>
-              <p className="py-3 text-neutral-500 text-base">{createdAt}</p>
+              <p className="py-3 text-neutral-500 text-sm">{createdAt}</p>
             </div>
 
-            <div className="py-3 flex gap-4 text-neutral-500 border-b-[1px] border-neutral-800">
+            <div className="text-sm py-3 flex gap-4 text-neutral-500 border-b-[1px] border-neutral-800">
               <p className="flex gap-1.5">
                 <span className="text-ligthGray">{tweet.comments.length}</span>
                 Comments
@@ -162,7 +166,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
 
             <div className="py-1 flex justify-around items-center gap-4 text-neutral-500 border-b-[1px] border-neutral-800">
               <div className="rounded-full p-2 hover:text-twitterBlue hover:bg-twitterBlue hover:bg-opacity-10 duration-75">
-                <AiOutlineMessage size={25} color="inherit" />
+                <AiOutlineMessage size={23} color="inherit" />
               </div>
 
               <div
@@ -173,9 +177,9 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
                 onClick={toggleLike}
               >
                 {hasLiked ? (
-                  <AiFillHeart size={25} color="inherit" />
+                  <AiFillHeart size={23} color="inherit" />
                 ) : (
-                  <AiOutlineHeart size={25} color="inherit" />
+                  <AiOutlineHeart size={23} color="inherit" />
                 )}
               </div>
             </div>
@@ -199,7 +203,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
         onClick={goToTweet}
         className="w-full p-1.5 flex border-b-[1px] border-neutral-800 hover:bg-slate-400 hover:bg-opacity-5 duration-100 cursor-pointer"
       >
-        <div className="h-full px-3 py-2">
+        <div className="h-full px-1.5 py-1 md:px-3 md:py-2">
           <div className="relative w-[40px] h-[40px]">
             <Avatar user={tweet.user} isClickable />
           </div>
@@ -207,13 +211,22 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
         <div className="flex flex-col px-3 py-2 w-full gap-4">
           <div>
             <div className="flex justify-between items-center">
-              <div className="flex gap-3 items-center">
-                <p className="text-base text-ligthGray font-semibold">
-                  {tweet.user.name}
-                </p>
-                <p className="text-neutral-500 text-sm">
-                  @{tweet.user.username}
-                </p>
+              <div className="flex gap-2.5 items-center">
+                <div className="flex gap-2.5 items-center max-w-3/4 overflow-hidden">
+                  <p className="text-sm text-ligthGray font-semibold flex">
+                    {tweet.user.name.length > 10 
+                      ? `${tweet.user.name.slice(0, 10)}...`
+                      : tweet.user.name
+                    }
+                  </p>
+                  <p className="text-neutral-500 text-sm">
+                    @
+                    {tweet.user.username.length > 10 
+                      ? `${tweet.user.username.slice(0, 10)}...`
+                      : tweet.user.username
+                    }
+                  </p>
+                </div>
                 <div className="relative w-[3px] h-[3px]">
                   <Image src="/assets/icons/dot.svg" fill alt="Dot" />
                 </div>
@@ -268,7 +281,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
                 </Menu>
               </div>
             </div>
-            <p className="text-base text-ligthGray">{tweet.body}</p>
+            <p className="text-sm text-ligthGray">{tweet.body}</p>
           </div>
 
           {tweet.image && (
@@ -286,7 +299,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
               className="flex gap-1.5 items-center hover:text-twitterBlue duration-100"
               onClick={composeComment}
             >
-              <span className="p-2 rounded-full hover:bg-twitterBlue hover:bg-opacity-20 duration-100">
+              <span className="text-sm p-2 rounded-full hover:bg-twitterBlue hover:bg-opacity-20 duration-100">
                 <AiOutlineMessage size={16} color="inherit" />
               </span>
               {fetchedTweet.comments.length}

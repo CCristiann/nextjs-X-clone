@@ -11,6 +11,14 @@
   @apply rounded-[12px] bg-black/40 backdrop-blur-lg border-[1px] border-neutral-800;
 }
 
+.followbar-users_scrollbar::-webkit-scrollbar{
+  width: 6px;
+}
+
+.followbar-users_scrollbar::-webkit-scrollbar-thumb{
+  @apply rounded-[12px] bg-black/40 backdrop-blur-lg p-10;
+}
+
 .not-scrollable {
   @apply overflow-y-hidden;
 }
@@ -44,10 +52,10 @@ html {
 }
 
 .modal_body {
-  @apply px-10;
+  @apply px-10 pt-8 md:pt-0;
 }
 .modal_footer {
-  @apply px-10 py-8 mb-5;
+  @apply px-10 my-8;
 }
 
 .image-container {

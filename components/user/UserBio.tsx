@@ -60,15 +60,15 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
       </div>
       <div className="flex flex-col gap-4 px-4 py-2.5">
         <div className="flex flex-col">
-          <p className="text-lg text-ligthGray font-semibold">{user.name}</p>
-          <p className="text-neutral-500 text-base">@{user.username}</p>
+          <p className="text-base text-ligthGray font-semibold break-words">{user.name}</p>
+          <p className="text-neutral-500 text-sm break-words">@{user.username}</p>
         </div>
 
         <>
           {user.bio ? (
-            <p className="text-base text-ligthGray w-full">{user.bio}</p>
+            <p className="text-sm text-ligthGray w-full break-words">{user.bio}</p>
           ) : (
-            <p className="text-base text-ligthGray w-full">
+            <p className="text-sm text-ligthGray w-full">
               This user has no bio.
             </p>
           )}
@@ -76,18 +76,18 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
 
         <div className="w-full flex flex-wrap gap-4 text-base text-neutral-500 ">
           {user.location && (
-            <p className="flex gap-1.5 items-center">
+            <p className="text-sm flex gap-1.5 items-center">
               <span>
-                <HiOutlineLocationMarker size={20} color="inherit" />
+                <HiOutlineLocationMarker size={18} color="inherit" />
               </span>
               {user.location}
             </p>
           )}
 
           {user.website && (
-            <p className="flex gap-1.5 items-center">
+            <p className="text-sm flex gap-1.5 items-center">
               <span>
-                <BiLink size={20} color="inherit" />
+                <BiLink size={18} color="inherit" />
               </span>
               <Link
                 href={user.website}
@@ -99,15 +99,15 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
             </p>
           )}
 
-          <p className="flex gap-1.5 items-center">
+          <p className="text-sm flex gap-1.5 items-center">
             <span>
-              <BiCalendar size={20} color="inherit" />
+              <BiCalendar size={18} color="inherit" />
             </span>
             Joined {createdAt}
           </p>
         </div>
 
-        <div className="flex gap-3 items-center text-ligthGray">
+        <div className="text-sm flex gap-3 items-center text-ligthGray">
           <p className="flex gap-1.5">
             {user.followingIds.length}
             <span className="text-neutral-500">Following</span>
