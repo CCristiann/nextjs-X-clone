@@ -4,39 +4,41 @@ import prisma from "@/libs/prismadb";
 
 export async function POST(req: NextRequest) {
   try {
-    const { userId, currentUserId } = await req.json();
+    const { userId, sessionUserId } = await req.json();
 
-    if (!userId && !currentUserId) {
+    if(userId === sessionUserId) throw new Error("IDs cant be equal.")
+
+    if (!userId && !sessionUserId) {
       throw new Error("Invalid user ID");
     }
 
     const user = await prisma.user.findUnique({
       where: {
-        id: userId,
+        id: sessionUserId,
       },
     });
 
     if (!user) throw new Error("Invalid user ID");
 
-    let updatedFollowingIds = [...(user.followingIds || [])];
-
+    let updatedFollowingIds = [...(user.followingIds)];
+    
     updatedFollowingIds.push(userId);
 
     const updatedUser = await prisma.user.update({
       where: {
-        id: currentUserId,
+        id: sessionUserId,
       },
       data: {
         followingIds: updatedFollowingIds,
       },
     });
 
-    if (currentUserId !== userId) {
+    if (sessionUserId !== userId) {
       await prisma.notification.create({
         data: {
           type: "follow",
           body: "started following you.",
-          creatorId: currentUserId,
+          creatorId: sessionUserId,
           userId: userId,
         },
       });
@@ -51,15 +53,15 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
-    const { userId, currentUserId } = await req.json();
+    const { userId, sessionUserId } = await req.json();
 
-    if (!userId && !currentUserId) {
+    if (!userId && !sessionUserId) {
       throw new Error("Invalid user ID");
     }
 
     const user = await prisma.user.findUnique({
       where: {
-        id: userId,
+        id: sessionUserId,
       },
     });
 
@@ -73,7 +75,7 @@ export async function DELETE(req: NextRequest) {
 
     const updatedUser = await prisma.user.update({
       where: {
-        id: currentUserId,
+        id: sessionUserId,
       },
       data: {
         followingIds: updatedFollowingIds,

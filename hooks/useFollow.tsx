@@ -4,9 +4,10 @@ import useUser from "./useUser";
 
 import axios from "axios";
 
-const useFollow = (userId: string, currentUserId: string) => {
+const useFollow = (userId: string, sessionUserId: string) => {
+  
   const { data: currentUser, mutate: mutateCurrentUser } =
-    useUser(currentUserId);
+    useUser(sessionUserId);
   const { mutate: mutateFetchedUser } = useUser(userId);
 
   const isFollowing = useMemo(() => {
@@ -24,14 +25,14 @@ const useFollow = (userId: string, currentUserId: string) => {
           axios.delete("/api/follow", {
             data: {
               userId,
-              currentUserId,
+              sessionUserId,
             },
           });
       } else {
         request = () =>
           axios.post("/api/follow", {
             userId,
-            currentUserId,
+            sessionUserId,
           });
       }
 
