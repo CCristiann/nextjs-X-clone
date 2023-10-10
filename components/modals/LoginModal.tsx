@@ -31,7 +31,7 @@ const reducer = (state = initialState, action: ActionProps) => {
   }
 };
 const LoginModal = () => {
-  const router = useRouter()
+  const router = useRouter();
   const loginModal = useLoginModal();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +69,7 @@ const LoginModal = () => {
         redirect: false,
       });
 
-      if(res?.error){
+      if (res?.error) {
         toast.error(res.error, {
           icon: null,
           style: {
@@ -79,18 +79,17 @@ const LoginModal = () => {
           },
           position: "bottom-center",
         });
-        router.push('/')
-        return
+        router.push("/");
+        return;
       }
 
       toast.success("Logged in!");
     } catch (err) {
-      
     } finally {
       setIsLoading(false);
       loginModal.onClose();
-      router.push('/')
-      router.refresh()
+      router.push("/");
+      router.refresh();
     }
   }, [state, loginModal]);
 

@@ -81,7 +81,6 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
         },
         position: "bottom-center",
       });
-
     } catch (err) {
       toast.error("Tweet deletion failed.", {
         icon: null,
@@ -92,7 +91,6 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
         },
         position: "bottom-center",
       });
-      
     } finally {
       setIsDeleteModalOpen(false);
       setIsMenuOpen(false);
@@ -111,23 +109,22 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
 
   if (isForTweetPage) {
     return (
-      <div className="w-full p-1.5 border-b-[1px] border-neutral-800">
-        <div className="flex flex-col px-3 py-2 w-full gap-4">
+      <div className="w-full border-b-[1px] border-neutral-800 p-1.5">
+        <div className="flex w-full flex-col gap-4 px-3 py-2">
           <div className="flex gap-4">
-            <div className="relative w-[40px] h-[40px]">
+            <div className="relative h-[40px] w-[40px]">
               <Avatar user={tweet.user} isClickable />
             </div>
             <div className="flex flex-col">
-              <p className="md:hidden text-base text-ligthGray font-semibold break-words">
+              <p className="break-words text-base font-semibold text-ligthGray md:hidden">
                 {tweet.user.name.length > 28
                   ? `${tweet.user.name.slice(0, 28)}...`
-                  : tweet.user.name
-                }
+                  : tweet.user.name}
               </p>
-              <p className="hidden md:block text-base text-ligthGray font-semibold break-words">
+              <p className="hidden break-words text-base font-semibold text-ligthGray md:block">
                 {tweet.user.name}
               </p>
-              <p className="text-neutral-500 text-sm">@{tweet.user.username}</p>
+              <p className="text-sm text-neutral-500">@{tweet.user.username}</p>
             </div>
           </div>
 
@@ -138,21 +135,21 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
               src={tweet.image}
               width={1920}
               height={1080}
-              className="rounded-xl w-fit h-fit max-h-[500px] object-cover"
+              className="h-fit max-h-[500px] w-fit rounded-xl object-cover"
               alt="Tweet image"
             />
           )}
 
           <div>
             <div className="flex items-center gap-2 border-b-[1px] border-neutral-800">
-              <p className="py-3 text-neutral-500 text-sm">{time}</p>
-              <div className="relative w-[3px] h-[3px]">
+              <p className="py-3 text-sm text-neutral-500">{time}</p>
+              <div className="relative h-[3px] w-[3px]">
                 <Image src="/assets/icons/dot.svg" fill alt="Dot" />
               </div>
-              <p className="py-3 text-neutral-500 text-sm">{createdAt}</p>
+              <p className="py-3 text-sm text-neutral-500">{createdAt}</p>
             </div>
 
-            <div className="text-sm py-3 flex gap-4 text-neutral-500 border-b-[1px] border-neutral-800">
+            <div className="flex gap-4 border-b-[1px] border-neutral-800 py-3 text-sm text-neutral-500">
               <p className="flex gap-1.5">
                 <span className="text-ligthGray">{tweet.comments.length}</span>
                 Comments
@@ -164,15 +161,15 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
               </p>
             </div>
 
-            <div className="py-1 flex justify-around items-center gap-4 text-neutral-500 border-b-[1px] border-neutral-800">
-              <div className="rounded-full p-2 hover:text-twitterBlue hover:bg-twitterBlue hover:bg-opacity-10 duration-75">
+            <div className="flex items-center justify-around gap-4 border-b-[1px] border-neutral-800 py-1 text-neutral-500">
+              <div className="rounded-full p-2 duration-75 hover:bg-twitterBlue hover:bg-opacity-10 hover:text-twitterBlue">
                 <AiOutlineMessage size={23} color="inherit" />
               </div>
 
               <div
                 className={`
                 ${hasLiked && "text-rose-500"}
-                rounded-full p-2 hover:text-rose-500 hover:bg-rose-500 hover:bg-opacity-10 duration-75
+                rounded-full p-2 duration-75 hover:bg-rose-500 hover:bg-opacity-10 hover:text-rose-500
               `}
                 onClick={toggleLike}
               >
@@ -201,36 +198,34 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
     <>
       <div
         onClick={goToTweet}
-        className="w-full p-1.5 flex border-b-[1px] border-neutral-800 hover:bg-slate-400 hover:bg-opacity-5 duration-100 cursor-pointer"
+        className="flex w-full cursor-pointer border-b-[1px] border-neutral-800 p-1.5 duration-100 hover:bg-slate-400 hover:bg-opacity-5"
       >
         <div className="h-full px-1.5 py-1 md:px-3 md:py-2">
-          <div className="relative w-[40px] h-[40px]">
+          <div className="relative h-[40px] w-[40px]">
             <Avatar user={tweet.user} isClickable />
           </div>
         </div>
-        <div className="flex flex-col px-3 py-2 w-full gap-4">
+        <div className="flex w-full flex-col gap-4 px-3 py-2">
           <div>
-            <div className="flex justify-between items-center">
-              <div className="flex gap-2.5 items-center">
-                <div className="flex gap-2.5 items-center max-w-3/4 overflow-hidden">
-                  <p className="text-sm text-ligthGray font-semibold flex">
-                    {tweet.user.name.length > 10 
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="max-w-3/4 flex items-center gap-2.5 overflow-hidden">
+                  <p className="flex text-sm font-semibold text-ligthGray">
+                    {tweet.user.name.length > 10
                       ? `${tweet.user.name.slice(0, 10)}...`
-                      : tweet.user.name
-                    }
+                      : tweet.user.name}
                   </p>
-                  <p className="text-neutral-500 text-sm">
+                  <p className="text-sm text-neutral-500">
                     @
-                    {tweet.user.username.length > 10 
+                    {tweet.user.username.length > 10
                       ? `${tweet.user.username.slice(0, 10)}...`
-                      : tweet.user.username
-                    }
+                      : tweet.user.username}
                   </p>
                 </div>
-                <div className="relative w-[3px] h-[3px]">
+                <div className="relative h-[3px] w-[3px]">
                   <Image src="/assets/icons/dot.svg" fill alt="Dot" />
                 </div>
-                <p className="text-neutral-500 text-sm">{createdAt}</p>
+                <p className="text-sm text-neutral-500">{createdAt}</p>
               </div>
               <div className="relative">
                 <div
@@ -238,7 +233,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
                     e.stopPropagation();
                     setIsMenuOpen(true);
                   }}
-                  className="p-2 rounded-full text-ligthGray hover:text-twitterBlue hover:bg-twitterBlue hover:bg-opacity-10 duration-100"
+                  className="rounded-full p-2 text-ligthGray duration-100 hover:bg-twitterBlue hover:bg-opacity-10 hover:text-twitterBlue"
                 >
                   <BsThreeDots size={19} color="inherit" className="z-10" />
                 </div>
@@ -289,17 +284,17 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
               src={tweet.image}
               width={1920}
               height={1080}
-              className="rounded-xl w-fit h-fit max-h-[500px] object-cover"
+              className="h-fit max-h-[500px] w-fit rounded-xl object-cover"
               alt="Tweet image"
             />
           )}
 
-          <div className="flex gap-5 items-center text-neutral-500 text-sm">
+          <div className="flex items-center gap-5 text-sm text-neutral-500">
             <p
-              className="flex gap-1.5 items-center hover:text-twitterBlue duration-100"
+              className="flex items-center gap-1.5 duration-100 hover:text-twitterBlue"
               onClick={composeComment}
             >
-              <span className="text-sm p-2 rounded-full hover:bg-twitterBlue hover:bg-opacity-20 duration-100">
+              <span className="rounded-full p-2 text-sm duration-100 hover:bg-twitterBlue hover:bg-opacity-20">
                 <AiOutlineMessage size={16} color="inherit" />
               </span>
               {fetchedTweet.comments.length}
@@ -307,11 +302,11 @@ const Tweet: React.FC<TweetProps> = ({ tweet, session, isForTweetPage }) => {
             <p
               className={`
             ${hasLiked && "text-rose-500"}
-            flex gap-1.5 items-center hover:text-rose-500 duration-100
+            flex items-center gap-1.5 duration-100 hover:text-rose-500
           `}
               onClick={onLike}
             >
-              <span className="p-2 rounded-full hover:bg-rose-500 hover:bg-opacity-10 duration-100">
+              <span className="rounded-full p-2 duration-100 hover:bg-rose-500 hover:bg-opacity-10">
                 {hasLiked ? (
                   <AiFillHeart size={16} color="inherit" />
                 ) : (

@@ -11,24 +11,24 @@ import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { FaUser, FaSearch } from "react-icons/fa";
 import useUser from "@/hooks/useUser";
 
-import prisma from '@/libs/prismadb'
+import prisma from "@/libs/prismadb";
 
 type SidebarProps = {
   session: Session;
 };
 
-const Sidebar: React.FC<SidebarProps> = async({ session }) => {
+const Sidebar: React.FC<SidebarProps> = async ({ session }) => {
   const user = await prisma.user.findUnique({
     where: {
-      id: session.user.id
-    }
-  })
+      id: session.user.id,
+    },
+  });
 
   const notificationsCount = await prisma.notification.count({
     where: {
-      userId: user?.id
-    }
-  })
+      userId: user?.id,
+    },
+  });
 
   const sidebarLinks = [
     {
@@ -52,16 +52,16 @@ const Sidebar: React.FC<SidebarProps> = async({ session }) => {
       icon: FaUser,
     },
   ];
-  
-  if(!user) return null
+
+  if (!user) return null;
 
   return (
-    <div className="fixed bottom-0 border-t-[1px] border-neutral-800 w-screen flex justify-center md:max-h-screen md:sticky md:top-0 md:w-fit md:flex-col md:justify-between md:items-center paddings bg-black z-50">
+    <div className="paddings fixed bottom-0 z-50 flex w-screen justify-center border-t-[1px] border-neutral-800 bg-black md:sticky md:top-0 md:max-h-screen md:w-fit md:flex-col md:items-center md:justify-between">
       <div className="flex w-full flex-col gap-5">
-        <div className="hidden md:flex justify-start p-4 w-fit rounded-full hover:bg-slate-400 hover:bg-opacity-10 duration-100">
+        <div className="hidden w-fit justify-start rounded-full p-4 duration-100 hover:bg-slate-400 hover:bg-opacity-10 md:flex">
           <TwitterX size="xs" color="lightGray" />
         </div>
-        <div className="flex flex-row justify-around md:flex-col md:items-center lg:items-start gap-2.5 w-full">
+        <div className="flex w-full flex-row justify-around gap-2.5 md:flex-col md:items-center lg:items-start">
           {sidebarLinks.map((link, i: number) => (
             <SidebarItem
               key={i}

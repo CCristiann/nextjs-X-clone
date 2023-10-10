@@ -38,29 +38,28 @@ const UserWidget: React.FC<UserWidgetProps> = ({
   return (
     <div
       onClick={handleClick}
-      className="relative w-fit lg:w-full hidden md:flex items-center p-2.5 rounded-full hover:bg-slate-300 hover:bg-opacity-10 duration-150 cursor-pointer"
+      className="relative hidden w-fit cursor-pointer items-center rounded-full p-2.5 duration-150 hover:bg-slate-300 hover:bg-opacity-10 md:flex lg:w-full"
     >
-      <div className="w-full flex justify-between items-center">
+      <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative w-[40px] h-[40px]">
+          <div className="relative h-[40px] w-[40px]">
             {isAvatarClickable ? (
               <Avatar user={user} isClickable />
             ) : (
               <Avatar user={user} />
             )}
           </div>
-          <div className="hidden lg:flex flex-col">
-            <h4 className="font-semibold text-ligthGray text-sm">
+          <div className="hidden flex-col lg:flex">
+            <h4 className="text-sm font-semibold text-ligthGray">
               {user.name && (
                 <>
-                {user.name.length > 10
-                  ? `${user.name.slice(0, 10)}...`
-                  : user.name
-                }
+                  {user.name.length > 10
+                    ? `${user.name.slice(0, 10)}...`
+                    : user.name}
                 </>
               )}
             </h4>
-            <p className="text-neutral-500 text-sm">@{user.username}</p>
+            <p className="text-sm text-neutral-500">@{user.username}</p>
           </div>
         </div>
         {hasMenu && (

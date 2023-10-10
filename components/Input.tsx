@@ -45,20 +45,20 @@ const Input: React.FC<InputProps> = ({
           }
           className="
             peer
+            h-32
             w-full
+            resize-none
             rounded-md
-            bg-black
             border-[1px]
             border-neutral-800
-            pt-6
+            bg-black
             px-3
             pb-3
+            pt-6
             text-ligthGray
-            focus:outline-none
-            focus:border-twitterBlue
             placeholder-transparent
-            resize-none
-            h-32
+            focus:border-twitterBlue
+            focus:outline-none
           "
         />
       ) : (
@@ -82,16 +82,16 @@ const Input: React.FC<InputProps> = ({
             peer
             w-full
             rounded-md
-            bg-black
             border-[1px]
             border-neutral-800
-            pt-6
+            bg-black
             px-3
             pb-3
+            pt-6
             text-ligthGray
-            focus:outline-none
-            focus:border-twitterBlue
             placeholder-transparent
+            focus:border-twitterBlue
+            focus:outline-none
           "
         />
       )}
@@ -99,19 +99,19 @@ const Input: React.FC<InputProps> = ({
         htmlFor={label}
         className="
           absolute
-          flex justify-center items-center
+          left-0 top-1 flex
+          items-center
+          justify-center
           px-3
-          left-0
-          top-1
-          text-twitterBlue
           text-sm
-          peer-placeholder-shown:text-neutral-400
-          peer-placeholder-shown:text-base
-          peer-placeholder-shown:top-5
-          peer-focus:text-sm
-          peer-focus:top-1
-          peer-focus:text-twitterBlue
+          text-twitterBlue
           transition-all
+          peer-placeholder-shown:top-5
+          peer-placeholder-shown:text-base
+          peer-placeholder-shown:text-neutral-400
+          peer-focus:top-1
+          peer-focus:text-sm
+          peer-focus:text-twitterBlue
         "
       >
         {label}
@@ -119,7 +119,7 @@ const Input: React.FC<InputProps> = ({
       {type === "password" && (
         <div
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-8 inset-y-[20%] h-10 w-10 hover:bg-slate-400 hover:bg-opacity-10 duration-100 rounded-full flex justify-center items-center"
+          className="absolute inset-y-[20%] right-8 flex h-10 w-10 items-center justify-center rounded-full duration-100 hover:bg-slate-400 hover:bg-opacity-10"
         >
           {showPassword ? (
             <AiOutlineEyeInvisible size={22} color="white" />

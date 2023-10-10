@@ -15,7 +15,7 @@ const Menu: React.FC<MenuProps> = ({
   setIsOpen,
   userWidget,
   tweetMenu,
-  headerMenu
+  headerMenu,
 }) => {
   const overlay = useRef<HTMLDivElement>(null);
   const wrapper = useRef<HTMLDivElement>(null);
@@ -41,15 +41,15 @@ const Menu: React.FC<MenuProps> = ({
         <div
           ref={overlay}
           onClick={handleOverlayClick}
-          className="fixed top-0 left-0 h-screen w-screen hover:cursor-default"
+          className="fixed left-0 top-0 h-screen w-screen hover:cursor-default"
         />
         <div
           ref={wrapper}
           className={`
       ${userWidget && "bottom-20 py-5"}
-      ${tweetMenu && "top-0 right-0"}
-      ${headerMenu && "top-16 left-6"}
-      absolute w-fit h-fit rounded-xl bg-black shadow-sm shadow-white z-40
+      ${tweetMenu && "right-0 top-0"}
+      ${headerMenu && "left-6 top-16"}
+      absolute z-40 h-fit w-fit rounded-xl bg-black shadow-sm shadow-white
     `}
         >
           {children}

@@ -88,25 +88,25 @@ const Modal: React.FC<ModalProps> = ({
       `}
       >
         {isLoading ? (
-          <div className="w-full h-[600px]">
+          <div className="h-[600px] w-full">
             <Loader />
           </div>
         ) : (
           <>
             <div
               className={`
-          ${hasTransparentHeader && "bg-black/40 backdrop-blur-md sticky top-0"}
-          flex justify-between items-center px-3 py-1.5 z-50
+          ${hasTransparentHeader && "sticky top-0 bg-black/40 backdrop-blur-md"}
+          z-50 flex items-center justify-between px-3 py-1.5
         `}
             >
-              <div className="flex gap-2.5 items-center">
+              <div className="flex items-center gap-2.5">
                 <button
-                  className="p-3 hover:bg-slate-300 hover:bg-opacity-10 rounded-full transition"
+                  className="rounded-full p-3 transition hover:bg-slate-300 hover:bg-opacity-10"
                   onClick={handleClose}
                 >
                   <AiOutlineClose size={20} color="white" />
                 </button>
-                <h3 className="text-xl text-ligthGray font-semibold">
+                <h3 className="text-xl font-semibold text-ligthGray">
                   {title}
                 </h3>
               </div>

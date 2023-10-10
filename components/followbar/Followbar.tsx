@@ -4,9 +4,11 @@ import FollowbarUsers from "./FollowbarUsers";
 
 const Followbar = () => {
   return (
-    <div className="hidden lg:sticky w-fit top-0 lg:block paddings h-screen">
-      <h4 className="z-20 sticky top-0 px-4 py-4 rounded-t-xl bg-neutral-800 text-white font-semibold text-xl">Who to follow</h4>
-      <div className="followbar-users_scrollbar relative max-h-full h-fit bg-neutral-800 rounded-b-xl overflow-auto">
+    <div className="paddings top-0 hidden h-screen w-fit lg:sticky lg:block">
+      <h4 className="sticky top-0 z-20 rounded-t-xl bg-neutral-800 px-4 py-4 text-xl font-semibold text-white">
+        Who to follow
+      </h4>
+      <div className="followbar-users_scrollbar relative h-fit max-h-full overflow-auto rounded-b-xl bg-neutral-800">
         <FollowbarUsers />
       </div>
     </div>

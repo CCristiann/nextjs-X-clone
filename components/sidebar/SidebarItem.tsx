@@ -18,22 +18,20 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   label,
   href,
   icon: Icon,
-  notificationsCount
+  notificationsCount,
 }) => {
-
   return (
-    <div className="flex items-start justify-center lg:justify-start w-fit z-50">
+    <div className="z-50 flex w-fit items-start justify-center lg:justify-start">
       {/*Mobile*/}
       <Link
-        className="realtive rounded-full h-fit w-fit flex items-center justify-center p-3 hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer lg:hidden"
+        className="realtive flex h-fit w-fit cursor-pointer items-center justify-center rounded-full p-3 hover:bg-slate-300 hover:bg-opacity-10 lg:hidden"
         href={href as string}
       >
-
-        {href === '/notifications' ? (
+        {href === "/notifications" ? (
           <div className="relative">
             <Icon size={20} color="white" />
             {notificationsCount > 0 && (
-              <div className="w-5 h-5 absolute -right-[5px] -top-[8px] text-white bg-twitterBlue rounded-full p-0.5 text-xs font-bold flex items-center justify-center">
+              <div className="absolute -right-[5px] -top-[8px] flex h-5 w-5 items-center justify-center rounded-full bg-twitterBlue p-0.5 text-xs font-bold text-white">
                 <span>{notificationsCount}</span>
               </div>
             )}
@@ -45,14 +43,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 
       {/*Desktop*/}
       <Link
-        className="realtive rounded-full gap-4 p-3 hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer hidden lg:flex"
+        className="realtive hidden cursor-pointer gap-4 rounded-full p-3 hover:bg-slate-300 hover:bg-opacity-10 lg:flex"
         href={href as string}
       >
-        {href === '/notifications' ? (
+        {href === "/notifications" ? (
           <div className="relative">
             <Icon size={23} color="white" />
             {notificationsCount > 0 && (
-              <div className="w-5 h-5 absolute -right-[5px] -top-[8px] text-white bg-twitterBlue rounded-full p-0.5 text-xs font-bold flex items-center justify-center">
+              <div className="absolute -right-[5px] -top-[8px] flex h-5 w-5 items-center justify-center rounded-full bg-twitterBlue p-0.5 text-xs font-bold text-white">
                 <span>{notificationsCount}</span>
               </div>
             )}
@@ -60,7 +58,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         ) : (
           <Icon size={23} color="white" />
         )}
-        <p className="hidden lg:block text-white text-lg">{label}</p>
+        <p className="hidden text-lg text-white lg:block">{label}</p>
       </Link>
     </div>
   );

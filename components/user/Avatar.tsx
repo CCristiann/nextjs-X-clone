@@ -36,15 +36,15 @@ const Avatar: React.FC<AvatarProps> = ({
     : user.profileImage
     ? user.profileImage
     : "/assets/images/user-placeholder.png";
-    
+
   return (
     <>
       {isClickable ? (
         <Image
           onClick={goToUser}
           className={`
-        ${hasBorder && "border-black border-4"}
-        rounded-full cursor-pointer
+        ${hasBorder && "border-4 border-black"}
+        cursor-pointer rounded-full
       `}
           src={src}
           fill
@@ -53,7 +53,7 @@ const Avatar: React.FC<AvatarProps> = ({
       ) : (
         <Image
           className={`
-        ${hasBorder && "border-black border-4"}
+        ${hasBorder && "border-4 border-black"}
         rounded-full
       `}
           src={src}

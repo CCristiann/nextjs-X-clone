@@ -6,7 +6,7 @@ import TwitterX from "../TwitterX";
 
 const Banner = () => {
   return (
-    <div className="w-screen h-full md:w-[40vw] lg:w-[65vw] md:h-[95vh] relative">
+    <div className="relative h-full w-screen md:h-[95vh] md:w-[40vw] lg:w-[65vw]">
       <Image
         className="h-full w-full object-cover"
         src="/assets/images/banner.png"
@@ -14,13 +14,13 @@ const Banner = () => {
         height={1080}
         alt="banner"
       />
-      <div className="flex md:hidden items-center justify-center w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-5">
+      <div className="absolute left-[50%] top-[50%] flex w-full translate-x-[-50%] translate-y-[-50%] items-center justify-center p-5 md:hidden">
         <TwitterX size="2md" color="white" />
       </div>
-      <div className="hidden md:flex lg:hidden items-center justify-center w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-5">
+      <div className="absolute left-[50%] top-[50%] hidden w-full translate-x-[-50%] translate-y-[-50%] items-center justify-center p-5 md:flex lg:hidden">
         <TwitterX size="xl" color="white" />
       </div>
-      <div className="hidden lg:flex items-center justify-center w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-5">
+      <div className="absolute left-[50%] top-[50%] hidden w-full translate-x-[-50%] translate-y-[-50%] items-center justify-center p-5 lg:flex">
         <TwitterX size="2xl" color="white" />
       </div>
     </div>

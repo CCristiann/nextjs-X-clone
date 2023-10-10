@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   try {
     const { userId, sessionUserId } = await req.json();
 
-    if(userId === sessionUserId) throw new Error("IDs cant be equal.")
+    if (userId === sessionUserId) throw new Error("IDs cant be equal.");
 
     if (!userId && !sessionUserId) {
       throw new Error("Invalid user ID");
@@ -20,8 +20,8 @@ export async function POST(req: NextRequest) {
 
     if (!user) throw new Error("Invalid user ID");
 
-    let updatedFollowingIds = [...(user.followingIds)];
-    
+    let updatedFollowingIds = [...user.followingIds];
+
     updatedFollowingIds.push(userId);
 
     const updatedUser = await prisma.user.update({

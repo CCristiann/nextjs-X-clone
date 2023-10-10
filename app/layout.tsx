@@ -20,9 +20,9 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'X Clone',
-  description: 'X Clone made with NextJS App Router.'
-}
+  title: "X Clone",
+  description: "X Clone made with NextJS App Router.",
+};
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -35,8 +35,8 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children }) => {
       <body className={poppins.className}>
         <NextAuthSessionProvider>
           {session ? (
-            <div className="h-full mx-auto xl:px-30 max-w-6xl">
-              <div className="flex flex-col md:flex-row lg:justify-between md:justify-center min-h-screen">
+            <div className="xl:px-30 mx-auto h-full max-w-6xl">
+              <div className="flex min-h-screen flex-col md:flex-row md:justify-center lg:justify-between">
                 <Sidebar session={session} />
                 <main className="app">{children}</main>
                 <Followbar />

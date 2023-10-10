@@ -8,15 +8,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-[12px] bg-black/40 backdrop-blur-lg border-[1px] border-neutral-800;
+  @apply rounded-[12px] border-[1px] border-neutral-800 bg-black/40 backdrop-blur-lg;
 }
 
-.followbar-users_scrollbar::-webkit-scrollbar{
+.followbar-users_scrollbar::-webkit-scrollbar {
   width: 6px;
 }
 
-.followbar-users_scrollbar::-webkit-scrollbar-thumb{
-  @apply rounded-[12px] bg-black/40 backdrop-blur-lg p-10;
+.followbar-users_scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-[12px] bg-black/40 p-10 backdrop-blur-lg;
 }
 
 .not-scrollable {
@@ -32,30 +32,30 @@ html {
 }
 
 .app {
-  @apply md:border-x-[1px] flex-1 md:max-w-[600px] w-full md:border-neutral-800;
+  @apply w-full flex-1 md:max-w-[600px] md:border-x-[1px] md:border-neutral-800;
 }
 
 .paddings {
-  @apply py-2 lg:py-4 px-1 lg:px-4;
+  @apply px-1 py-2 lg:px-4 lg:py-4;
 }
 
 .modal_overlay-center {
-  @apply fixed top-0 left-0 bg-slate-600/40 h-screen w-screen flex items-center justify-center z-[999];
+  @apply fixed left-0 top-0 z-[999] flex h-screen w-screen items-center justify-center bg-slate-600/40;
 }
 
 .modal_overlay-topCenter {
-  @apply fixed left-0 bg-slate-600/40 h-screen w-screen flex justify-center z-[999];
+  @apply fixed left-0 z-[999] flex h-screen w-screen justify-center bg-slate-600/40;
 }
 
 .modal_wrapper {
-  @apply relative bg-black w-screen h-screen md:max-h-[560px] md:h-fit md:max-w-xl md:rounded-xl md:w-full;
+  @apply relative h-screen w-screen bg-black md:h-fit md:max-h-[560px] md:w-full md:max-w-xl md:rounded-xl;
 }
 
 .modal_body {
   @apply px-10 pt-8 md:pt-0;
 }
 .modal_footer {
-  @apply px-10 my-8;
+  @apply my-8 px-10;
 }
 
 .image-container {

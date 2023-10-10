@@ -5,7 +5,6 @@ import useUser from "./useUser";
 import axios from "axios";
 
 const useFollow = (userId: string, sessionUserId: string) => {
-  
   const { data: currentUser, mutate: mutateCurrentUser } =
     useUser(sessionUserId);
   const { mutate: mutateFetchedUser } = useUser(userId);

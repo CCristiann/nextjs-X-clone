@@ -25,7 +25,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       className={`
         ${color === "red" && "text-red-700"}
         ${color === "lightGray" && "text-ligthGray"}
-        flex gap-3 items-center px-5 py-3 w-full min-w-[300px] text-sm hover:bg-slate-400 hover:bg-opacity-10 duration-100 font-semibold
+        flex w-full min-w-[300px] items-center gap-3 px-5 py-3 text-sm font-semibold duration-100 hover:bg-slate-400 hover:bg-opacity-10
       `}
       onClick={onSubmit}
     >

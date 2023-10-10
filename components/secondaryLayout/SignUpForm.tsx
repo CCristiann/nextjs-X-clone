@@ -14,23 +14,23 @@ const SignUpForm = () => {
   const router = useRouter();
 
   return (
-    <div className="md:w-[60vw] lg:w-[55vw] text-white flex flex-col self-center gap-5 px-12 py-8 md:justify-center">
+    <div className="flex flex-col gap-5 self-center px-12 py-8 text-white md:w-[60vw] md:justify-center lg:w-[55vw]">
       <TwitterX size="xs" color="lightGray" />
 
-      <h1 className="w-[65%] md:w-fit leading-[2.90rem] font-bold text-4xl md:text-6xl tracking-wide text-ligthGray my-5 md:my-8">
+      <h1 className="my-5 w-[65%] text-4xl font-bold leading-[2.90rem] tracking-wide text-ligthGray md:my-8 md:w-fit md:text-6xl">
         Happening now
       </h1>
-      <h4 className="font-bold text-2xl md:text-4xl text-ligthGray">
+      <h4 className="text-2xl font-bold text-ligthGray md:text-4xl">
         Join Twitter today.
       </h4>
 
-      <div className="w-[300px] flex flex-col gap-4">
+      <div className="flex w-[300px] flex-col gap-4">
         <Providers />
 
-        <div className="w-full flex gap-2 items-center justify-center">
-          <span className="w-full h-[1px] bg-neutral-800"></span>
+        <div className="flex w-full items-center justify-center gap-2">
+          <span className="h-[1px] w-full bg-neutral-800"></span>
           <span>or</span>
-          <span className="w-full h-[1px] bg-neutral-800"></span>
+          <span className="h-[1px] w-full bg-neutral-800"></span>
         </div>
 
         <Button
@@ -56,8 +56,8 @@ const SignUpForm = () => {
           .
         </p>
 
-        <div className="w-full flex flex-col gap-4 my-10">
-          <h4 className="text-lightGray font-semibold text-base">
+        <div className="my-10 flex w-full flex-col gap-4">
+          <h4 className="text-lightGray text-base font-semibold">
             Already have an account?
           </h4>
           <Button

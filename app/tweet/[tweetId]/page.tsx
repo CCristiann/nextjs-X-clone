@@ -20,7 +20,7 @@ const TweetPage = ({ params }: PageProps) => {
   const { data: session } = useSession();
   if (!tweet || !session)
     return (
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <Loader />
       </div>
     );

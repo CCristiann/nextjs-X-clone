@@ -22,15 +22,15 @@ const NotificationsFeed: React.FC<NotificationsFeedProps> = ({ session }) => {
   if (typeof notifications === "string") return null;
   if (isLoading || !notifications)
     return (
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <Loader />
       </div>
     );
 
   if (notifications.length === 0)
     return (
-      <div className="w-full h-fit py-10 flex items-center justify-center">
-        <h3 className="text-xl text-ligthGray font-bold">
+      <div className="flex h-fit w-full items-center justify-center py-10">
+        <h3 className="text-xl font-bold text-ligthGray">
           You don&apos;t have notifications!
         </h3>
       </div>

@@ -49,28 +49,28 @@ const UserHero: React.FC<UserHeroProps> = ({
 
   return (
     <div>
-      <div className="bg-neutral-700 h-44 w-full relative">
+      <div className="relative h-44 w-full bg-neutral-700">
         {coverImage && <Image src={coverImage} fill alt="Cover Image" />}
         {isEditable && (
-          <div className="absolute flex items-center justify-center w-[42px] h-[42px] rounded-full bg-black/40 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+          <div className="absolute left-[50%] top-[50%] flex h-[42px] w-[42px] translate-x-[-50%] translate-y-[-50%] items-center justify-center rounded-full bg-black/40">
             <MdOutlineAddAPhoto size={20} color="white" />
             <input
               id="coverImage"
-              className="absolute top-0 left-0 opacity-0 w-full h-full"
+              className="absolute left-0 top-0 h-full w-full opacity-0"
               type="file"
               accept="image/*"
               onChange={handleImageChange}
             />
           </div>
         )}
-        <div className="absolute -bottom-14 left-4 w-[120px] h-[120px]">
+        <div className="absolute -bottom-14 left-4 h-[120px] w-[120px]">
           {user && <Avatar user={user} image={profileImage} hasBorder />}
           {isEditable && (
-            <div className="absolute flex items-center justify-center w-[42px] h-[42px] rounded-full bg-black/40 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <div className="absolute left-[50%] top-[50%] flex h-[42px] w-[42px] translate-x-[-50%] translate-y-[-50%] items-center justify-center rounded-full bg-black/40">
               <MdOutlineAddAPhoto size={20} color="white" />
               <input
                 id="profileImage"
-                className="absolute top-0 left-0 opacity-0 w-full h-full"
+                className="absolute left-0 top-0 h-full w-full opacity-0"
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}

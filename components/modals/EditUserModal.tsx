@@ -121,7 +121,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, mutateUser }) => {
         isEditable
         dispatch={dispatch}
       />
-      <div className="flex flex-col gap-4 pt-14 pb-8">
+      <div className="flex flex-col gap-4 pb-8 pt-14">
         <Input
           type="text"
           label="Name"

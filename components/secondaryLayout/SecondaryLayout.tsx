@@ -6,8 +6,8 @@ import SignUpForm from "./SignUpForm";
 
 const SecondaryLayout = () => {
   return (
-    <div className="h-fit w-screen md:max-h-screen md:h-full flex flex-col justify-between">
-      <div className="flex flex-col-reverse md:flex-row md:h-fit">
+    <div className="flex h-fit w-screen flex-col justify-between md:h-full md:max-h-screen">
+      <div className="flex flex-col-reverse md:h-fit md:flex-row">
         <Banner />
         <SignUpForm />
       </div>

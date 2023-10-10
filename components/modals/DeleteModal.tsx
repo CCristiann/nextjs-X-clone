@@ -16,10 +16,10 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
 }) => {
   if (isOpen)
     return (
-      <div className="flex justify-center items-center fixed top-0 left-0 h-screen w-screen bg-slate-600/40 z-[999]">
-        <div className="w-[320px] rounded-xl flex flex-col items-center gap-6 bg-black p-10">
-          <p className="text-sm text-neutral-500 flex flex-col gap-3">
-            <span className="text-lg text-ligthGray font-semibold">
+      <div className="fixed left-0 top-0 z-[999] flex h-screen w-screen items-center justify-center bg-slate-600/40">
+        <div className="flex w-[320px] flex-col items-center gap-6 rounded-xl bg-black p-10">
+          <p className="flex flex-col gap-3 text-sm text-neutral-500">
+            <span className="text-lg font-semibold text-ligthGray">
               Delete Tweet?
             </span>
             This can’t be undone and it will be removed from your profile, the
@@ -27,7 +27,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
             results.
           </p>
 
-          <div className="w-full flex flex-col gap-2.5">
+          <div className="flex w-full flex-col gap-2.5">
             <Button
               label="Delete"
               fullWidth

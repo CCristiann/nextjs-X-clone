@@ -37,10 +37,10 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       onClick={onClick}
       className={`
-      rounded-full font-semibold disabled:opacity-70 disabled:cursor-not-allowed hover:bg-opacity-20 duration-150
-      ${Icon && "flex justify-center items-center gap-3 text-sm"}
+      rounded-full font-semibold duration-150 hover:bg-opacity-20 disabled:cursor-not-allowed disabled:opacity-70
+      ${Icon && "flex items-center justify-center gap-3 text-sm"}
       ${fullWidth && "w-full"}
-      ${large ? "text-lg px-5 py-3" : "text-sm px-4"}
+      ${large ? "px-5 py-3 text-lg" : "px-4 text-sm"}
       ${additionalPadding ? "py-2.5" : "py-2"}
       ${
         outlineStyle &&
@@ -51,7 +51,7 @@ const Button: React.FC<ButtonProps> = ({
       ${whiteStyle && "bg-white text-black"}
       ${
         redOutlineStyle &&
-        "bg-transparent text-red-700  border-[1px] border-red-700"
+        "border-[1px] border-red-700  bg-transparent text-red-700"
       }
       ${redFillStyle && "bg-red-700 text-ligthGray"}
     `}

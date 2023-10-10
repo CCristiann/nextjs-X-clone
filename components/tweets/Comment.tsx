@@ -16,23 +16,23 @@ const Comment: React.FC<CommentProps> = ({ comment }) => {
   }, [comment.createdAt]);
 
   return (
-    <div className="py-1.5 min-h-[100px] w-full flex border-b-[1px] border-neutral-800 hover:bg-slate-400 hover:bg-opacity-5 duration-100 cursor-pointer">
+    <div className="flex min-h-[100px] w-full cursor-pointer border-b-[1px] border-neutral-800 py-1.5 duration-100 hover:bg-slate-400 hover:bg-opacity-5">
       <div className="h-full px-3 py-2">
-        <div className="relative w-[40px] h-[40px]">
+        <div className="relative h-[40px] w-[40px]">
           <Avatar user={comment.user} isClickable />
         </div>
       </div>
-      <div className="flex flex-col px-3 py-2 w-full gap-4">
+      <div className="flex w-full flex-col gap-4 px-3 py-2">
         <div className="flex flex-col gap-2">
-          <div className="flex gap-3 items-center">
-            <p className="text-sm text-ligthGray font-semibold">
+          <div className="flex items-center gap-3">
+            <p className="text-sm font-semibold text-ligthGray">
               {comment.user.name}
             </p>
-            <p className="text-neutral-500 text-sm">@{comment.user.username}</p>
-            <div className="relative w-[3px] h-[3px]">
+            <p className="text-sm text-neutral-500">@{comment.user.username}</p>
+            <div className="relative h-[3px] w-[3px]">
               <Image src="/assets/icons/dot.svg" fill alt="Dot" />
             </div>
-            <p className="text-neutral-500 text-sm">{createdAt}</p>
+            <p className="text-sm text-neutral-500">{createdAt}</p>
           </div>
           <p className="text-sm text-ligthGray">{comment.body}</p>
         </div>
@@ -42,7 +42,7 @@ const Comment: React.FC<CommentProps> = ({ comment }) => {
             src={comment.image}
             width={1920}
             height={1080}
-            className="rounded-xl w-fit h-fit max-h-[500px] object-cover"
+            className="h-fit max-h-[500px] w-fit rounded-xl object-cover"
             alt="Tweet image"
           />
         )}

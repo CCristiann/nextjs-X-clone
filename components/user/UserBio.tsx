@@ -37,7 +37,7 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
 
   return (
     <div className="border-b-[1px] border-neutral-800 pb-5">
-      <div className="flex justify-end items-center px-4 py-2.5">
+      <div className="flex items-center justify-end px-4 py-2.5">
         {session.user.id === user.id ? (
           <Button
             label="Edit profile"
@@ -60,23 +60,29 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
       </div>
       <div className="flex flex-col gap-4 px-4 py-2.5">
         <div className="flex flex-col">
-          <p className="text-base text-ligthGray font-semibold break-words">{user.name}</p>
-          <p className="text-neutral-500 text-sm break-words">@{user.username}</p>
+          <p className="break-words text-base font-semibold text-ligthGray">
+            {user.name}
+          </p>
+          <p className="break-words text-sm text-neutral-500">
+            @{user.username}
+          </p>
         </div>
 
         <>
           {user.bio ? (
-            <p className="text-sm text-ligthGray w-full break-words">{user.bio}</p>
+            <p className="w-full break-words text-sm text-ligthGray">
+              {user.bio}
+            </p>
           ) : (
-            <p className="text-sm text-ligthGray w-full">
+            <p className="w-full text-sm text-ligthGray">
               This user has no bio.
             </p>
           )}
         </>
 
-        <div className="w-full flex flex-wrap gap-4 text-base text-neutral-500 ">
+        <div className="flex w-full flex-wrap gap-4 text-base text-neutral-500 ">
           {user.location && (
-            <p className="text-sm flex gap-1.5 items-center">
+            <p className="flex items-center gap-1.5 text-sm">
               <span>
                 <HiOutlineLocationMarker size={18} color="inherit" />
               </span>
@@ -85,7 +91,7 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
           )}
 
           {user.website && (
-            <p className="text-sm flex gap-1.5 items-center">
+            <p className="flex items-center gap-1.5 text-sm">
               <span>
                 <BiLink size={18} color="inherit" />
               </span>
@@ -99,7 +105,7 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
             </p>
           )}
 
-          <p className="text-sm flex gap-1.5 items-center">
+          <p className="flex items-center gap-1.5 text-sm">
             <span>
               <BiCalendar size={18} color="inherit" />
             </span>
@@ -107,7 +113,7 @@ const UserBio: React.FC<UserBioProps> = ({ user, session }) => {
           </p>
         </div>
 
-        <div className="text-sm flex gap-3 items-center text-ligthGray">
+        <div className="flex items-center gap-3 text-sm text-ligthGray">
           <p className="flex gap-1.5">
             {user.followingIds.length}
             <span className="text-neutral-500">Following</span>

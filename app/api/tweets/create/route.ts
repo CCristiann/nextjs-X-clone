@@ -6,7 +6,7 @@ import { TweetValidator } from "@/libs/validators/tweet";
 export async function POST(req: NextRequest, res: NextResponse) {
   const reqBody = await req.json();
 
-  const { body, image, creator } = TweetValidator.parse(reqBody)
+  const { body, image, creator } = TweetValidator.parse(reqBody);
 
   try {
     const tweet = await prisma.post.create({

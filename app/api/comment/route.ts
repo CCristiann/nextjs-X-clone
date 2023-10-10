@@ -5,7 +5,7 @@ import { CommentValidator } from "@/libs/validators/comment";
 
 export async function POST(req: NextRequest) {
   try {
-    const reqBody = await req.json()
+    const reqBody = await req.json();
     const { body, image, tweetId, creator } = CommentValidator.parse(reqBody);
 
     if (!tweetId) throw new Error("Invalid tweet ID");

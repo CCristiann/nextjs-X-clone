@@ -10,7 +10,7 @@ cloudinary.config({
 });
 
 export async function POST(req: NextRequest) {
-  const reqBody = await req.json()
+  const reqBody = await req.json();
   const { path } = UploadValidator.parse(reqBody);
 
   if (!path) return new Response("Image path is required.", { status: 400 });

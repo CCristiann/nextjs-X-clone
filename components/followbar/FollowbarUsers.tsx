@@ -14,7 +14,7 @@ const FollowbarUsers = () => {
   if (users.length === 0) return <Loader />;
 
   return (
-    <div className="flex flex-col gap-2 pb-4 px-4 h-full overflow-auto pr-5">
+    <div className="flex h-full flex-col gap-2 overflow-auto px-4 pb-4 pr-5">
       {users.map((user: User) => (
         <UserWidget user={user} key={user.id} isAvatarClickable />
       ))}

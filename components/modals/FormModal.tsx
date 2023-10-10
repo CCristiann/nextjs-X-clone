@@ -41,9 +41,9 @@ const FormModal: React.FC<FormModalProps> = ({
 
   const formModalConent = (
     <div className="text-white">
-      <div className="p-2 sticky top-0 flex gap-2.5 items-center bg-black/60 backdrop-blur-lg z-50">
+      <div className="sticky top-0 z-50 flex items-center gap-2.5 bg-black/60 p-2 backdrop-blur-lg">
         <button
-          className="p-3 hover:bg-slate-300 hover:bg-opacity-10 rounded-full transition"
+          className="rounded-full p-3 transition hover:bg-slate-300 hover:bg-opacity-10"
           onClick={handleClose}
         >
           <AiOutlineClose size={20} color="white" />

@@ -18,7 +18,7 @@ const Providers = () => {
         onClick={() => {}}
       />
       <Button
-        label="Sign up with Apple"
+        label="Sign up with Github"
         providerIcon={BsGithub}
         fullWidth
         whiteStyle

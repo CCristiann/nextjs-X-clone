@@ -69,8 +69,8 @@ const RegisterModal = () => {
         name,
         username,
         email,
-        password
-      }
+        password,
+      };
 
       const res = await axios.post("/api/register", payload);
 

@@ -20,7 +20,7 @@ const TweetsFeed: React.FC<TweetsFeedProps> = ({ user, session }) => {
 
   if (!session || isLoading)
     return (
-      <div className="w-full h-full">
+      <div className="h-full w-full">
         <Loader />
       </div>
     );
