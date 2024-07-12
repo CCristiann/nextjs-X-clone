@@ -26,9 +26,12 @@ export async function POST(req: NextRequest) {
     const result = await cloudinary.uploader.upload(path, options);
     const image = result.secure_url;
 
+    if(typeof image !== "string") return NextResponse.json("An error occured uploading image", {
+      status: 500
+    })
+
     return NextResponse.json(image, { status: 200 });
   } catch (err) {
-    console.log(err);
     return NextResponse.json("An error occured uploading image", {
       status: 500,
     });
