@@ -44,7 +44,7 @@ const Avatar: React.FC<AvatarProps> = ({
           onClick={goToUser}
           className={`
         ${hasBorder && "border-4 border-black"}
-        cursor-pointer rounded-full
+        cursor-pointer rounded-full object-cover
       `}
           src={src}
           fill
@@ -54,7 +54,7 @@ const Avatar: React.FC<AvatarProps> = ({
         <Image
           className={`
         ${hasBorder && "border-4 border-black"}
-        rounded-full
+        rounded-full object-cover
       `}
           src={src}
           fill

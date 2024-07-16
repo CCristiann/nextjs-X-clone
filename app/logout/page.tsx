@@ -53,7 +53,7 @@ const LogoutPage = () => {
           onClick={() => router.push("/")}
         />
       </div>
-      {isLoading && <Loader message="Loggin out..." isForFullPage />}
+      {isLoading && <Loader message="Logging out..." isForFullPage />}
     </div>
   );
 };

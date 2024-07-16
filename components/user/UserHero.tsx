@@ -50,7 +50,7 @@ const UserHero: React.FC<UserHeroProps> = ({
   return (
     <div>
       <div className="relative h-44 w-full bg-neutral-700">
-        {coverImage && <Image src={coverImage} fill alt="Cover Image" />}
+        {coverImage && <Image src={coverImage} fill alt="Cover Image" className="object-cover" />}
         {isEditable && (
           <div className="absolute left-[50%] top-[50%] flex h-[42px] w-[42px] translate-x-[-50%] translate-y-[-50%] items-center justify-center rounded-full bg-black/40">
             <MdOutlineAddAPhoto size={20} color="white" />
